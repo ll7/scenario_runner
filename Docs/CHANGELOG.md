@@ -10,6 +10,7 @@
 ### :rocket: New Features
 * OpenSCENARIO support:
     - Added support for position with Lane information  (roadId and laneId)
+    - Added support for TimeOfDay tag
 ### :bug: Bug Fixes
 * Fixed bug causing the simulation to end after running in synchronous mode
 
