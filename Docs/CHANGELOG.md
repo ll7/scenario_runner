@@ -10,6 +10,8 @@
 ### :rocket: New Features
 * OpenSCENARIO support:
     - Added support for position with Lane information  (roadId and laneId)
+### :bug: Bug Fixes
+* Fixed bug causing the simulation to end after running in synchronous mode
 
 ## CARLA ScenarioRunner 0.9.8
 ### :rocket: New Features
