@@ -187,6 +187,13 @@ class ScenarioRunner(object):
         """
         Remove and destroy all actors
         """
+        if self.world is not None and self.manager is not None \
+                and self._args.agent and self.manager.get_running_status():
+            # Reset to asynchronous mode
+            settings = self.world.get_settings()
+            settings.synchronous_mode = False
+            settings.fixed_delta_seconds = None
+            self.world.apply_settings(settings)
 
         self.client.stop_recorder()
         self.manager.cleanup()
@@ -259,9 +266,11 @@ class ScenarioRunner(object):
             filename = config_name + current_time + ".txt"
 
         if not self.manager.analyze_scenario(self._args.output, filename, junit_filename):
-            print("Success!")
+            print("All scenario tests were passed successfully!")
         else:
-            print("Failure!")
+            print("Not all scenario tests were successful")
+            if not (self._args.output or filename or junit_filename):
+                print("Please run with --output for further information")
 
     def _load_and_wait_for_world(self, town, ego_vehicles=None):
         """
@@ -270,9 +279,6 @@ class ScenarioRunner(object):
 
         if self._args.reloadWorld:
             self.world = self.client.load_world(town)
-            settings = self.world.get_settings()
-            settings.fixed_delta_seconds = 1.0 / self.frame_rate
-            self.world.apply_settings(settings)
         else:
             # if the world should not be reloaded, wait at least until all ego vehicles are ready
             ego_vehicle_found = False
@@ -295,6 +301,10 @@ class ScenarioRunner(object):
         CarlaActorPool.set_world(self.world)
         CarlaDataProvider.set_world(self.world)
 
+        settings = self.world.get_settings()
+        settings.fixed_delta_seconds = 1.0 / self.frame_rate
+        self.world.apply_settings(settings)
+
         if self._args.agent:
             settings = self.world.get_settings()
             settings.synchronous_mode = True
@@ -306,9 +316,9 @@ class ScenarioRunner(object):
         else:
             self.world.wait_for_tick()
 
-        if CarlaDataProvider.get_map().name != town:
-            print("The CARLA server uses the wrong map!")
-            print("This scenario requires to use map {}".format(town))
+        if CarlaDataProvider.get_map().name != town and CarlaDataProvider.get_map().name != "OpenDriveMap":
+            print("The CARLA server uses the wrong map: {}".format(CarlaDataProvider.get_map().name))
+            print("This scenario requires to use map: {}".format(town))
             return False
 
         return True
@@ -401,6 +411,7 @@ class ScenarioRunner(object):
 
             # Remove all actors
             scenario.remove_all_actors()
+
             result = True
         except SensorConfigurationInvalid as e:
             self._cleanup()
