@@ -11,9 +11,7 @@ This module provides the key configuration parameters for a scenario based on Op
 
 from __future__ import print_function
 
-import datetime
 import logging
-import math
 import os
 import xml.etree.ElementTree as ET
 
@@ -22,7 +20,7 @@ import xmlschema
 import carla
 
 # pylint: disable=line-too-long
-from srunner.scenarioconfigs.scenario_configuration import ActorConfigurationData, ScenarioConfiguration, WeatherConfiguration
+from srunner.scenarioconfigs.scenario_configuration import ActorConfigurationData, ScenarioConfiguration
 # pylint: enable=line-too-long
 from srunner.scenariomanager.carla_data_provider import CarlaDataProvider  # workaround
 from srunner.tools.openscenario_parser import OpenScenarioParser
@@ -48,7 +46,7 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
         self.other_actors = []
         self.ego_vehicles = []
         self.trigger_points = []
-        self.weather = WeatherConfiguration()
+        self.weather = carla.WeatherParameters()
 
         self.storyboard = self.xml_tree.find("Storyboard")
         self.story = self.storyboard.find("Story")
@@ -88,8 +86,6 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
         self._set_scenario_name()
         self._set_carla_town()
         self._set_actor_information()
-        self._set_carla_weather()
-        self._set_carla_friction()
 
         self._validate_result()
 
@@ -163,6 +159,7 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
         # workaround for relative positions during init
         world = self.client.get_world()
         if world is None or world.get_map().name != self.town:
+            self.logger.warning("Wrong OpenDRIVE map in use. Forcing reload of CARLA world")
             if ".xodr" in self.town:
                 with open(self.town) as od_file:
                     data = od_file.read()
@@ -174,60 +171,6 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
             world.wait_for_tick()
         else:
             CarlaDataProvider.set_world(world)
-
-    def _set_carla_weather(self):
-        """
-        Extract weather information from OpenSCENARIO config
-        """
-
-        set_environment = next(self.init.iter("EnvironmentAction"))
-
-        if sum(1 for _ in set_environment.iter("Weather")) != 0:
-            environment = set_environment.find("Environment")
-        elif set_environment.find("CatalogReference") is not None:
-            catalog_reference = set_environment.find("CatalogReference")
-            environment = self.catalogs[catalog_reference.attrib.get(
-                "catalogName")][catalog_reference.attrib.get("entryName")]
-
-        weather = environment.find("Weather")
-        sun = weather.find("Sun")
-        self.weather.sun_azimuth = math.degrees(float(sun.attrib.get('azimuth', 0)))
-        self.weather.sun_altitude = math.degrees(float(sun.attrib.get('elevation', 0)))
-        self.weather.cloudiness = 100 - float(sun.attrib.get('intensity', 0)) * 100
-        fog = weather.find("Fog")
-        self.weather.fog_distance = float(fog.attrib.get('visualRange', 'inf'))
-        if self.weather.fog_distance < 1000:
-            self.weather.fog_density = 100
-        self.weather.precipitation = 0
-        self.weather.precipitation_deposits = 0
-        self.weather.wetness = 0
-        self.weather.wind_intensity = 0
-        precepitation = weather.find("Precipitation")
-        if precepitation.attrib.get('precipitationType') == "rain":
-            self.weather.precipitation = float(precepitation.attrib.get('intensity')) * 100
-            self.weather.precipitation_deposits = 100  # if it rains, make the road wet
-            self.weather.wetness = self.weather.precipitation
-        elif precepitation.attrib.get('type') == "snow":
-            raise AttributeError("CARLA does not support snow precipitation")
-
-        time_of_day = environment.find("TimeOfDay")
-        time = time_of_day.attrib.get("dateTime")  # 22-4: night; 4-6: sunrise; 6-20: day; 20-22: sunset
-        dtime = datetime.datetime.strptime(time, "%Y-%m-%dT%H:%M:%S")
-
-        if dtime.hour >= 22 or dtime.hour <= 4:
-            self.weather.sun_altitude = -90
-        elif dtime.hour >= 20 and dtime.hour < 22 or \
-                dtime.hour <= 6 and dtime.hour > 4:
-            self.weather.sun_altitude = 10
-
-    def _set_carla_friction(self):
-        """
-        Extract road friction information from OpenSCENARIO config
-        """
-
-        road_condition = self.init.iter("RoadCondition")
-        for condition in road_condition:
-            self.friction = float(condition.attrib.get('frictionScaleFactor'))
 
     def _set_global_parameters(self):
         """
@@ -325,7 +268,8 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
         """
         model = pedestrian.attrib.get('model', "walker.*")
 
-        new_actor = ActorConfigurationData(model, carla.Transform(), rolename, category="pedestrian", args=args)
+        speed = self._get_actor_speed(rolename)
+        new_actor = ActorConfigurationData(model, carla.Transform(), rolename, speed, category="pedestrian", args=args)
         new_actor.transform = self._get_actor_transform(rolename)
 
         self.other_actors.append(new_actor)
@@ -392,11 +336,11 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
         actor_found = False
 
         for private_action in self.init.iter("Private"):
-            if private_action.attrib.get('object', None) == actor_name:
+            if private_action.attrib.get('entityRef', None) == actor_name:
                 if actor_found:
                     # pylint: disable=line-too-long
                     self.logger.warning(
-                        "Warning: The actor '%s' was already assigned an initial position. Overwriting pose!", actor_name)
+                        "Warning: The actor '%s' was already assigned an initial speed. Overwriting inital speed!", actor_name)
                     # pylint: enable=line-too-long
                 actor_found = True
 
@@ -423,4 +367,4 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
             raise AttributeError("CARLA level not defined")
 
         if not self.ego_vehicles:
-            raise AttributeError("No ego vehicles defined in scenario")
+            self.logger.warning("No ego vehicles defined in scenario")
