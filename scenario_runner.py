@@ -15,6 +15,7 @@ and finally triggers the scenario execution.
 
 from __future__ import print_function
 
+import glob
 import traceback
 import argparse
 from argparse import RawTextHelpFormatter
@@ -31,27 +32,11 @@ import pkg_resources
 import carla
 
 from srunner.scenarioconfigs.openscenario_configuration import OpenScenarioConfiguration
-from srunner.scenarioconfigs.route_scenario_configuration import RouteScenarioConfiguration
 from srunner.scenariomanager.carla_data_provider import CarlaDataProvider
 from srunner.scenariomanager.scenario_manager import ScenarioManager
-# pylint: disable=unused-import
-# For the following includes the pylint check is disabled, as these are accessed via globals()
-from srunner.scenarios.control_loss import ControlLoss
-from srunner.scenarios.follow_leading_vehicle import FollowLeadingVehicle, FollowLeadingVehicleWithObstacle
-from srunner.scenarios.maneuver_opposite_direction import ManeuverOppositeDirection
-from srunner.scenarios.no_signal_junction_crossing import NoSignalJunctionCrossing
-from srunner.scenarios.object_crash_intersection import VehicleTurningRight, VehicleTurningLeft
-from srunner.scenarios.object_crash_vehicle import StationaryObjectCrossing, DynamicObjectCrossing
-from srunner.scenarios.opposite_vehicle_taking_priority import OppositeVehicleRunningRedLight
-from srunner.scenarios.other_leading_vehicle import OtherLeadingVehicle
-from srunner.scenarios.signalized_junction_left_turn import SignalizedJunctionLeftTurn
-from srunner.scenarios.signalized_junction_right_turn import SignalizedJunctionRightTurn
-from srunner.scenarios.change_lane import ChangeLane
-from srunner.scenarios.cut_in import CutIn
-# pylint: enable=unused-import
 from srunner.scenarios.open_scenario import OpenScenario
 from srunner.scenarios.route_scenario import RouteScenario
-from srunner.tools.scenario_config_parser import ScenarioConfigurationParser
+from srunner.tools.scenario_parser import ScenarioConfigurationParser
 from srunner.tools.route_parser import RouteParser
 
 # Version of scenario_runner
@@ -106,13 +91,6 @@ class ScenarioRunner(object):
         if LooseVersion(dist.version) < LooseVersion('0.9.8'):
             raise ImportError("CARLA version 0.9.8 or newer required. CARLA version found: {}".format(dist))
 
-        # Load additional scenario definitions, if there are any
-        # If something goes wrong an exception will be thrown by importlib (ok here)
-        if self._args.additionalScenario != '':
-            module_name = os.path.basename(args.additionalScenario).split('.')[0]
-            sys.path.insert(0, os.path.dirname(args.additionalScenario))
-            self.additional_scenario_module = importlib.import_module(module_name)
-
         # Load agent if requested via command line args
         # If something goes wrong an exception will be thrown by importlib (ok here)
         if self._args.agent is not None:
@@ -161,12 +139,24 @@ class ScenarioRunner(object):
         If scenario is not supported or not found, exit script
         """
 
-        if scenario in globals():
-            return globals()[scenario]
+        # Path of all scenario at "srunner/scenarios" folder + the path of the additional scenario argument
+        scenarios_list = glob.glob("{}/srunner/scenarios/*.py".format(os.getenv('ROOT_SCENARIO_RUNNER', "./")))
+        scenarios_list.append(self._args.additionalScenario)
 
-        for member in inspect.getmembers(self.additional_scenario_module):
-            if scenario in member and inspect.isclass(member[1]):
-                return member[1]
+        for scenario_file in scenarios_list:
+
+            # Get their module
+            module_name = os.path.basename(scenario_file).split('.')[0]
+            sys.path.insert(0, os.path.dirname(scenario_file))
+            scenario_module = importlib.import_module(module_name)
+
+            # And their members of type class
+            for member in inspect.getmembers(scenario_module, inspect.isclass):
+                if scenario in member:
+                    return member[1]
+
+            # Remove unused Python paths
+            sys.path.pop(0)
 
         print("Scenario '{}' not supported ... Exiting".format(scenario))
         sys.exit(-1)
@@ -177,7 +167,7 @@ class ScenarioRunner(object):
         """
         # Simulation still running and in synchronous mode?
         if self.manager is not None and self.manager.get_running_status() \
-                and self.world is not None and self.world.get_settings().synchronous_mode:
+                and self.world is not None and self._args.sync:
             # Reset to asynchronous mode
             settings = self.world.get_settings()
             settings.synchronous_mode = False
@@ -234,7 +224,10 @@ class ScenarioRunner(object):
                 self.ego_vehicles[i].set_transform(ego_vehicles[i].transform)
 
         # sync state
-        CarlaDataProvider.get_world().tick()
+        if CarlaDataProvider.is_sync_mode():
+            self.world.tick()
+        else:
+            self.world.wait_for_tick()
 
     def _analyze_scenario(self, config):
         """
@@ -382,23 +375,21 @@ class ScenarioRunner(object):
         Run conventional scenarios (e.g. implemented using the Python API of ScenarioRunner)
         """
         result = False
-        # Setup and run the scenarios for repetition times
-        for _ in range(int(self._args.repetitions)):
 
-            # Load the scenario configurations provided in the config file
-            scenario_configurations = None
-            scenario_config_file = ScenarioConfigurationParser.find_scenario_config(
-                self._args.scenario,
-                self._args.configFile)
-            if scenario_config_file is None:
-                print("Configuration for scenario {} cannot be found!".format(self._args.scenario))
-                continue
+        # Load the scenario configurations provided in the config file
+        scenario_config_file = ScenarioConfigurationParser.find_scenario_config(
+            self._args.scenario,
+            self._args.configFile)
+        if scenario_config_file is None:
+            print("Configuration for scenario {} cannot be found!".format(self._args.scenario))
+            return result
 
-            scenario_configurations = ScenarioConfigurationParser.parse_scenario_configuration(scenario_config_file,
-                                                                                               self._args.scenario)
+        scenario_configurations = ScenarioConfigurationParser.parse_scenario_configuration(scenario_config_file,
+                                                                                           self._args.scenario)
 
-            # Execute each configuration
-            for config in scenario_configurations:
+        # Execute each configuration
+        for config in scenario_configurations:
+            for _ in range(self._args.repetitions):
                 result = self._load_and_run_scenario(config)
 
             self._cleanup()
@@ -409,7 +400,6 @@ class ScenarioRunner(object):
         Run the route scenario
         """
         result = False
-        repetitions = self._args.repetitions
 
         if self._args.route:
             routes = self._args.route[0]
@@ -419,14 +409,10 @@ class ScenarioRunner(object):
                 single_route = self._args.route[2]
 
         # retrieve routes
-        route_descriptions_list = RouteParser.parse_routes_file(routes, single_route)
-        # find and filter potential scenarios for each of the evaluated routes
-        # For each of the routes and corresponding possible scenarios to be evaluated.
+        route_configurations = RouteParser.parse_routes_file(routes, scenario_file, single_route)
 
-        for _, route_description in enumerate(route_descriptions_list):
-            for _ in range(repetitions):
-
-                config = RouteScenarioConfiguration(route_description, scenario_file)
+        for config in route_configurations:
+            for _ in range(self._args.repetitions):
                 result = self._load_and_run_scenario(config)
 
                 self._cleanup()
@@ -444,6 +430,7 @@ class ScenarioRunner(object):
             return False
 
         config = OpenScenarioConfiguration(self._args.openscenario, self.client)
+
         result = self._load_and_run_scenario(config)
         self._cleanup()
         return result
@@ -493,7 +480,7 @@ def main():
     parser.add_argument(
         '--scenario', help='Name of the scenario to be executed. Use the preposition \'group:\' to run all scenarios of one class, e.g. ControlLoss or FollowLeadingVehicle')
     parser.add_argument('--randomize', action="store_true", help='Scenario parameters are randomized')
-    parser.add_argument('--repetitions', default=1, help='Number of scenario executions')
+    parser.add_argument('--repetitions', default=1, type=int, help='Number of scenario executions')
     parser.add_argument('--list', action="store_true", help='List all supported scenarios and exit')
     parser.add_argument(
         '--agent', help="Agent used to execute the scenario (optional). Currently only compatible with route-based scenarios.")
