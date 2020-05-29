@@ -21,11 +21,19 @@ In this scenario vehicle is passing another vehicle in a rural area, in daylight
 weather conditions, at a non-junction and encroaches into another
 vehicle traveling in the opposite direction. The 4 possible scenarios are:
 ```
-ManeuverOppositeDirection_1
+ManeuverOppositeDirection_1 
 ManeuverOppositeDirection_2
 ManeuverOppositeDirection_3
 ManeuverOppositeDirection_4
 ```
+
+####Notes
+Only ManeuverOppositeDirection_2 and ManeuverOppositeDirection_4 are working. The others crashing by executing them.
+
+#### Executing ManeuverOppositeDirection_2 & ManeuverOppositeDirection_4 with the autopilot
+By starting the autopilot, car 1 is crashing into the obstacle while car 2 and 3 are passing the other lane.
+
+![maneuveroppositedirection](img/Images for execution results/ManeuverOppositeDirection.jpeg) 
 
 ###Follow Leading Vehicle
 The scenario realizes a common driving behavior, in which the user-controlled
@@ -57,7 +65,53 @@ FollowLeadingVehicleWithObstacle_10
 FollowLeadingVehicle_11
 FollowLeadingVehicleWithObstacle_11
 ```
+#### Difference between with or without an obstacle
+The obstacle in every scenario is a cyclist who forces the vehicle in front to stop. As soon as the cyclist is off the road, the vehicles continue their journey.
 
+#### Executing FollowLeadingVehicle_1 and FollowLeadingVehicleWithObstacle_1
+The ego vehicle follows a leading car driving down a one-lane straight road in the city.
+![](img/Images for execution results/IMG_20200529_131326.jpg)
+
+#### Executing FollowLeadingVehicle_2 and FollowLeadingVehicleWithObstacle_2
+The ego vehicle follows a leading car driving down a one-lane straight road in the city.
+![](img/Images for execution results/IMG_20200529_131326.jpg)
+
+#### Executing FollowLeadingVehicle_3 and FollowLeadingVehicleWithObstacle_3
+The ego vehicle follows a leading car driving down a one-lane bend in the city.
+![](img/Images for execution results/IMG_20200529_131349.jpg)
+
+#### Executing FollowLeadingVehicle_4 and FollowLeadingVehicleWithObstacle_4
+The ego vehicle follows a leading car driving down a two-lane straight road in the city.
+![](img/Images for execution results/IMG_20200529_131415.jpg)
+
+#### Executing FollowLeadingVehicle_5 and FollowLeadingVehicleWithObstacle_5
+The ego vehicle follows a leading car driving down a four-lane straight road on a highway.
+
+![](img/Images for execution results/IMG_20200529_131446.jpg)
+
+#### Executing FollowLeadingVehicle_6 and FollowLeadingVehicleWithObstacle_6
+The ego vehicle follows a leading car driving down a single-tracked curve with a steep climb in the mountains.
+![](img/Images for execution results/IMG_20200529_131509.jpg)
+
+#### Executing FollowLeadingVehicle_7 and FollowLeadingVehicleWithObstacle_7
+The ego vehicle follows a leading car driving down a four-lane curve on a highway.
+![](img/Images for execution results/IMG_20200529_131917.jpg)
+
+#### Executing FollowLeadingVehicle_8 and FollowLeadingVehicleWithObstacle_8
+The ego vehicle follows a leading car driving down a three-lane curve on a highway.
+![](img/Images for execution results/IMG_20200529_131936.jpg)
+
+#### Executing FollowLeadingVehicle_9 and FollowLeadingVehicleWithObstacle_9
+The ego vehicle follows a leading car driving down a three-lane straight road in the middle on a highway.
+![](img/Images for execution results/IMG_20200529_131952.jpg)
+
+#### Executing FollowLeadingVehicle_10 and FollowLeadingVehicleWithObstacle_10
+The ego vehicle follows a leading car driving down a three-lane straight road on the right lane on a highway.
+![](img/Images for execution results/IMG_20200529_132011.jpg)
+
+#### Executing FollowLeadingVehicle_11 and FollowLeadingVehicleWithObstacle_11
+The ego vehicle follows a leading car driving down a one-lane straight road in the city.
+![](img/Images for execution results/IMG_20200529_132027.jpg)
 
 ###Signalized Junction Left Turn
 In this scenario hero vehicle is turning left in an urban area,
