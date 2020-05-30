@@ -33,7 +33,7 @@ Only ManeuverOppositeDirection_2 and ManeuverOppositeDirection_4 are working. Th
 #### Executing ManeuverOppositeDirection_2 & ManeuverOppositeDirection_4 with the autopilot
 By starting the autopilot, car 1 is crashing into the obstacle while car 2 and 3 are passing the other lane.
 
-![maneuveroppositedirection](img/Images for execution results/ManeuverOppositeDirection.jpeg) 
+![maneuveroppositedirection](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/ManeuverOppositeDirection.jpeg) 
 
 ###Follow Leading Vehicle
 The scenario realizes a common driving behavior, in which the user-controlled
