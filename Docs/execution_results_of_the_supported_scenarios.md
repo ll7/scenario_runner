@@ -111,7 +111,7 @@ The ego vehicle follows a leading car driving down a three-lane straight road on
 
 #### Executing FollowLeadingVehicle_11 and FollowLeadingVehicleWithObstacle_11
 The ego vehicle follows a leading car driving down a one-lane straight road in the city.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529__132027.jpg)
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_132027.jpg)
 
 ### Signalized Junction Left Turn
 In this scenario hero vehicle is turning left in an urban area,
