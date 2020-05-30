@@ -33,7 +33,7 @@ Only ManeuverOppositeDirection_2 and ManeuverOppositeDirection_4 are working. Th
 #### Executing ManeuverOppositeDirection_2 & ManeuverOppositeDirection_4 with the autopilot
 By starting the autopilot, car 1 is crashing into the obstacle while car 2 and 3 are passing the other lane.
 
-![maneuveroppositedirection](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/ManeuverOppositeDirection.jpeg =250x250) 
+![maneuveroppositedirection](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/ManeuverOppositeDirection.jpeg) 
 
 ###Follow Leading Vehicle
 The scenario realizes a common driving behavior, in which the user-controlled
@@ -70,11 +70,11 @@ The obstacle in every scenario is a cyclist who forces the vehicle in front to s
 
 #### Executing FollowLeadingVehicle_1 and FollowLeadingVehicleWithObstacle_1
 The ego vehicle follows a leading car driving down a one-lane straight road in the city.
-![](img/Images for execution results/IMG_20200529_131326.jpg)
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_131326.jpg)
 
 #### Executing FollowLeadingVehicle_2 and FollowLeadingVehicleWithObstacle_2
 The ego vehicle follows a leading car driving down a one-lane straight road in the city.
-![](img/Images for execution results/IMG_20200529_131326.jpg)
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_131326.jpg)
 
 #### Executing FollowLeadingVehicle_3 and FollowLeadingVehicleWithObstacle_3
 The ego vehicle follows a leading car driving down a one-lane bend in the city.
