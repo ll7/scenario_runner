@@ -99,15 +99,15 @@ The ego vehicle follows a leading car driving down a four-lane curve on a highwa
 
 #### Executing FollowLeadingVehicle_8 and FollowLeadingVehicleWithObstacle_8
 The ego vehicle follows a leading car driving down a three-lane curve on a highway.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529__131936.jpg)
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_131936.jpg)
 
 #### Executing FollowLeadingVehicle_9 and FollowLeadingVehicleWithObstacle_9
 The ego vehicle follows a leading car driving down a three-lane straight road in the middle on a highway.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529__131952.jpg)
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_131952.jpg)
 
 #### Executing FollowLeadingVehicle_10 and FollowLeadingVehicleWithObstacle_10
 The ego vehicle follows a leading car driving down a three-lane straight road on the right lane on a highway.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529__132011.jpg)
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_132011.jpg)
 
 #### Executing FollowLeadingVehicle_11 and FollowLeadingVehicleWithObstacle_11
 The ego vehicle follows a leading car driving down a one-lane straight road in the city.
