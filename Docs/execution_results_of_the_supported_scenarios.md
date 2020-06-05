@@ -126,6 +126,28 @@ SignalizedJunctionLeftTurn_5
 SignalizedJunctionLeftTurn_6
 ```
 
+#### Executing SignalizedJunctionLeftTurn_1
+The ego vehicle is approaching a singalized Junction and turns right.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_184547.jpg)
+
+#### Executing SignalizedJunctionLeftTurn_2
+The Szenario was not possible to execute.
+
+#### Executing SignalizedJunctionLeftTurn_3
+The Szenario was not possible to execute.
+
+#### Executing SignalizedJunctionLeftTurn_4
+The Szenario was not possible to execute.
+
+#### Executing SignalizedJunctionLeftTurn_5
+The ego vehicle is approaching a singalized Junction and turns left in a collision with another vehicle.
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_185240.jpg)
+
+#### Executing SignalizedJunctionLeftTurn_6
+The ego vehicle is approaching a singalized Junction and drives straight ahead.
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_185958.jpg)
+
 ### Signalized Junction Right Turn
 In this scenario right turn of hero actor without collision at signalized intersection
 is tested. Hero Vehicle is turning right in an urban area, at a signalized intersection and
@@ -140,6 +162,41 @@ SignalizedJunctionRightTurn_5
 SignalizedJunctionRightTurn_6
 SignalizedJunctionRightTurn_7
 ```
+
+#### Executing SignalizedJunctionRightTurn_1
+The ego vehicle is approaching a singalized Junction and turns left after the green light appeared.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
+
+#### Executing SignalizedJunctionRightTurn_2
+The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
+
+#### Executing SignalizedJunctionRightTurn_3
+The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
+
+#### Executing SignalizedJunctionRightTurn_4
+The Szenario was not possible to execute.
+
+![]()
+
+#### Executing SignalizedJunctionRightTurn_5
+The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
+
+#### Executing SignalizedJunctionRightTurn_6
+The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
+
+#### Executing SignalizedJunctionRightTurn_7
+The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
 ### Vehicle Turning Right
 In this scenario the ego vehicle takes a right turn from an intersection where
@@ -156,6 +213,29 @@ VehicleTurningRight_6
 VehicleTurningRight_7
 VehicleTurningRight_8
 ```
+
+#### Executing VehicleTurningRight_1
+The ego vehicle drives to a signalized Junction and stops till the green light turns on. Then the vehicle turns left.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190654.jpg)
+
+#### Executing VehicleTurningRight_2
+The ego vehicle drives to a signalized Junction and stops till the green light turns on. Then the vehicle turns left.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190654.jpg)
+
+#### Executing VehicleTurningRight_3
+The ego vehicle drives to a signalized Junction and stops till the green light turns on. Then the vehicle turns right.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_191207.jpg)
+
+#### Executing VehicleTurningRight_4 and VehicleTurningRight_5 and VehicleTurningRight_6
+In this Szenario's the vehicle is only driving to the sinalized Junction and stops.
+
+#### Executing VehicleTurningRight_7
+The ego vehicle drives to a Junction and stops till a bycycle can drive over the street and then the vehicle turns right.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_192512.jpg)
 
 ### Vehicle Turning Left
 This scenario is similar to 'VehicleTurningRight'. The difference is that the ego
