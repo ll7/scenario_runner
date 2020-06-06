@@ -176,7 +176,7 @@ The ego vehicle drives to a signalized Junction and stops till another vehicle c
 #### Executing SignalizedJunctionRightTurn_3
 The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
+    ![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
 #### Executing SignalizedJunctionRightTurn_4
 The Szenario was not possible to execute.
@@ -251,19 +251,65 @@ VehicleTurningLeft_7
 VehicleTurningLeft_8
 ```
 
+#### Executing VehicleTurningLeft_1 and VehicleTurningLeft_6
+The ego vehicle takes a left turn from an intersection after the green signal turns on. In Addition the vehicle stops as a cyclist (marked with a "X") crosses the road.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_124757.jpg)
+
+#### Executing VehicleTurningLeft_2
+The ego vehicle takes a right turn from an intersection after the green signal turns on. 
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_125358.jpg)
+
+#### Executing VehicleTurningLeft_3 and VehicleTurningLeft_4 and VehicleTurningLeft_5
+The ego vehicle takes a right turn from an intersection after the green signal turns on. 
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_125358.jpg)
+
+
+#### Executing VehicleTurningLeft_7 and Vehicle TurningLeft_8
+The ego vehicle drives to an intersection and stops. In Addition in the scenario VehicleTUrningLeft7 the vehicle stops as a cyclist (marked with a "X") crosses the road.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_130214.jpg)
+
+
 ### Opposite Vehicle Running Red Light
-In this scenario an illegal behavior at an intersection is tested. An other
+In this scenario an illegal behavior at an intersection is tested. Another
 vehicle waits at an intersection, but illegally runs a red traffic light. The
 approaching ego vehicle has to handle this situation correctly, i.e. despite of
 a green traffic light, it has to stop and wait until the intersection is clear
 again. Afterwards, it should continue driving. The 5 possible scenarios are:
 ```
-OppositeVehicleRunningRedLight011
-OppositeVehicleRunningRedLight021
-OppositeVehicleRunningRedLight031
-OppositeVehicleRunningRedLight032
-OppositeVehicleRunningRedLight033
+OppositeVehicleRunningRedLight_1
+OppositeVehicleRunningRedLight_2
+OppositeVehicleRunningRedLight_3
+OppositeVehicleRunningRedLight_4
+OppositeVehicleRunningRedLight_5
 ```
+
+### Executing OppositeVehicleRunningRedLight_1
+Another vehicle waits at an intersection, but illegally runs a red traffic light. The approaching ego vehicle stops and turns right after the other vehicle passed the intersection.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_133630.jpg)
+
+### Executing OppositeVehicleRunningRedLight_2
+Another vehicle waits at an intersection, but illegally runs a red traffic light. The approaching ego vehicle stops and drives straight on after the other vehicle passed the intersection.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_133855.jpg)
+
+### Executing OppositeVehicleRunningRedLight_3
+Another vehicle waits at an intersection, but illegally runs a red traffic light. The approaching ego vehicle stops and turns right after the other vehicle passed the intersection.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_134016.jpg)
+
+### Executing OppositeVehicleRunningRedLight_4
+The scenario works not correctly.
+
+### Executing OppositeVehicleRunningRedLight_5
+Another vehicle waits at an intersection, but illegally runs a red traffic light. The approaching ego vehicle stops and drives straight on after the other vehicle passed the intersection.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_134041.jpg)
+
 
 ### Other Leading Vehicle
 The scenario realizes a common driving behavior, in which the user-controlled ego
@@ -347,6 +393,8 @@ to avoid collision and navigate across the junction to succeed. The 1 possible s
 ```
 NoSignalJunctionCrossing
 ```
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_133018(3).jpg)
+
 
 ### Change Lane
 ??????
