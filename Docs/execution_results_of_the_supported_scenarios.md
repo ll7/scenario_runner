@@ -66,7 +66,7 @@ FollowLeadingVehicle_11
 FollowLeadingVehicleWithObstacle_11
 ```
 #### Difference between with or without an obstacle
-The obstacle in every scenario is a cyclist who forces the vehicle in front to stop. As soon as the cyclist is off the road, the vehicles continue their journey.
+The obstacle in every scenario is a cyclist (marked with a "X")  who forces the vehicle in front to stop. As soon as the cyclist is off the road, the vehicles continue their journey.
 
 #### Executing FollowLeadingVehicle_1 and FollowLeadingVehicleWithObstacle_1
 The ego vehicle follows a leading car driving down a one-lane straight road in the city.
