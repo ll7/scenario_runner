@@ -6,11 +6,13 @@ You can find the detailed description of the supported scenarios here:
 ## I.) Preparation
 
 ### Start the Carla Server
+Move to the the Directory "CARLA_0.9.9" and execute the following command in the Terminal:
 ```
 ./CarlaUE4.sh
 ```
 
 ### Get to know useful parameters of the Scenario Runner
+To execute the scenario runner commands you have to move to the Directory "scenario_runner".
 Before starting the scenario runner get aware of the "--help" parameter, it could be useful.
 ```
 python scenario_runner.py --help
@@ -24,8 +26,8 @@ python scenario_runner.py --list
 
 ## II.) Execute the Scenario Runner
 
-###Start the Scenario Runner with a supported Scenario
-You can replace "FollowLeadingVehicle_1" with any other scenario, which was listed with the command before. The parameter "--reloadWorld" is optional and not necessary if you already in the right world.
+### Start the Scenario Runner with a supported Scenario
+You can replace "FollowLeadingVehicle_1" with any other scenario, which was listed with the command before. The parameter "--reloadWorld" is optional and not necessary if you already in the right world. Be aware that you are in the "scenario_runner" directory when you want to execute this command.
 ```
 python scenario_runner.py --scenario FollowLeadingVehicle_1 --reloadWorld
 ```

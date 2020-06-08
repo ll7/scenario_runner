@@ -331,6 +331,17 @@ OtherLeadingVehicle_9
 OtherLeadingVehicle_10
 ```
 
+### Executing OtherLeadingVehicle_1 and OtherLeadingVehicle_2 and OtherLeadingVehicle_8 and OtherLeadingVehicle_9 and OtherLeadingVehicle_10
+The user-controlled ego vehicle (shown in the rectangle) follows a leading car driving down a three-lane given road. Next to the leading car is another car.
+At some point the leading cars decelerate. The ego vehicle reacts by decelearting too.
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_173401.jpg)
+
+### Executing OtherLeadingVehicle_3 and OtherLeadingVehicle_7
+Its in fact the same scenarios as in the both Scenarios above. The little difference now is that there is a two-lane instead of a three-lane given.
+
+### Executing OtherLeadingVehicle_4 and OtherLeadingVehicle_5 and OtherLeadingVehicle_6
+Same Scenarios as the mentioned scenario above. The difference here ist that there is a four-lane given.
+
 ### Control Loss
 In this scenario control loss of a vehicle is tested due to bad road conditions, etc
 and it checks whether the vehicle is regained its control and corrected its course. The 15 possible scenarios are:
@@ -351,6 +362,37 @@ ControlLoss_13
 ControlLoss_14
 ControlLoss_15
 ```
+
+### Executing ControlLoss_1 and ControlLoss_15
+In this Scenario the ego vehicle has to drive over a poorly maintained road (marked with rectangles).
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_183445.jpg)
+
+### Executing ControlLoss_2 and ControlLoss_3 and ControlLoss_7 and ControlLoss_8
+They are the same Scenario as described before. The difference is that after the second bad condition there is immediately followed another one.
+
+### Executing ControlLoss_4 and ControlLoss_5 and ControlLoss_6
+In this scenarios the car starts jerking, but there is no bad condition visible.
+
+### Executing ControlLoss_9 and ControlLoss_12
+In this Scenario the ego vehicle has to drive over a poorly maintained road (marked with rectangles).
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_183842(1).jpg)
+
+### Executing ControlLoss_10 and ControlLoss_11
+In this Scenario the ego vehicle has to drive over a poorly maintained road (marked with rectangles). The three bad entities have approximately the same distance from each other.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_184709.jpg)
+
+### Executing ControlLoss_10 and ControlLoss_13
+In this Scenario the ego vehicle has to drive over a poorly maintained road (marked with rectangles).
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_190227.jpg)
+
+### Executing ControlLoss_10 and ControlLoss_14
+In this Scenario the ego vehicle has to drive over a poorly maintained road (marked with rectangles).
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_190302.jpg)
 
 ### Stationary Object Crossing
 In this scenario a cyclist is stationary waiting in the middle of the road and
