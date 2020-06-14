@@ -395,9 +395,9 @@ In this Scenario the ego vehicle has to drive over a poorly maintained road (mar
 ![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_190302.jpg)
 
 ### Stationary Object Crossing
-In this scenario a cyclist is stationary waiting in the middle of the road and
+In this scenario a container is stationary waiting in the middle of the road and
 blocking the way for the ego vehicle. Hence, the ego vehicle has to stop in
-front of the cyclist. The 8 possible scenarios are:
+front of the container. The 8 possible scenarios are:
 ```
 StationaryObjectCrossing_1
 StationaryObjectCrossing_2
@@ -409,10 +409,33 @@ StationaryObjectCrossing_7
 StationaryObjectCrossing_8
 ```
 
+### Executing StationaryObjectCrossing_1 and StationaryObjectCrossing_2 and StationaryObjectCrossing_7
+In this Scenario the ego vehicle collides against a container in the middle of the road.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200614_203545.jpg)
+
+### Executing StationaryObjectCrossing_3
+In this Scenario the container is on a intersection.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200614_203851(1).jpg)
+
+### Executing StationaryObjectCrossing_4
+In this Scenario the container is in the middle of a curve.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200614_203642.jpg)
+
+### Executing StationaryObjectCrossing_5 and StationaryObjectCrossing_6
+In this Scenario the container is on a highway.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200614_203941.jpg)
+
+### Executing StationaryObjectCrossing_8
+This Scenario is not possible to execute.
+
 ### Dynamic Object Crossing
 This is similar to 'StationaryObjectCrossing', but with the difference that the
-cyclist is dynamic. It suddenly drives into the way of the ego vehicle, which
-has to stop accordingly. After some time, the cyclist will clear the road, such
+Container is a running human, who suddenly drives into the way of the ego vehicle, which
+has to stop accordingly. After some time, the human will clear the road, such
 that the ego vehicle can continue driving. The 9 possible scenarios are:
 ```
 DynamicObjectCrossing_1
@@ -425,6 +448,14 @@ DynamicObjectCrossing_7
 DynamicObjectCrossing_8
 DynamicObjectCrossing_9
 ```
+
+### Executing DynamicObjectCrossing_1 and DynamicObjectCrossing_2 and DynamicObjectCrossing_3 and DynamicObjectCrossing_4 and DynamicObjectCrossing_7 and DynamicObjectCrossing_9
+In this Scenario a human is running into the way of the ego vehicle, which has to stop accordingly.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200614_204035.jpg)
+
+### Executing DynamicObjectCrossing_5 and DynamicObjectCrossing_6 and DynamicObjectCrossing_8
+This Scenarios are not working correctly. 
 
 ### No Signal Junction Crossing
 This scenario tests negotiation between two vehicles crossing cross each other
