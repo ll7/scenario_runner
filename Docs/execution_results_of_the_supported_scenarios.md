@@ -470,14 +470,14 @@ NoSignalJunctionCrossing
 
 
 ### Change Lane
-??????
+This Scenario was not possible to execute.
 ```
 ChangeLane
 ChangeLane_2
 ```
 
 ### Challenge Basic
-???
+This Scenario was not possible to execute.
 ```
 Challenge_Basic_00
 Challenge_Basic_01
@@ -486,25 +486,25 @@ Challenge_Basic_04
 ```
 
 ### Background Activity
-???
+This Scenario was not possible to execute.
 ```
 BackgroundActivity_1
 ```
 
 ### Cut in from left Lane
-???
+This Scenario was not possible to execute.
 ```
 CutInFrom_left_Lane
 ```
 ### Cut in from right Lane
-???
+In this scenario, the Ego Vehicle drives in the middle lane on the highway while another vehicle overtakes it from the right and pulls into the middle lane so that the Ego Vehicle has to brake down briefly.
 ```
 CutInFrom_right_Lane
 ```
-
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200628_184223.jpg)
 
 ### Free Ride Town
-???
+This Scenario were not possible to execute.
 ```
 FreeRideTown01
 FreeRideTown02
@@ -513,14 +513,14 @@ FreeRideTown04
 ```
 
 ### MultiEgoTown
-???
+This Scenarios were not possible to execute.
 ```
 MultiEgoTown01
 MultiEgoTown03
 ```
 
 ### VehicleTurnLeftAtJunction
-???
+This Scenarios were not possible to execute.
 ```
 VehicleTurnLeftAtJunction_1
 VehicleTurnLeftAtJunction_2
@@ -537,26 +537,27 @@ python scenario_runner.py --openscenario srunner/examples/[placeholder].xosc
 ```
 
 ### Lane Change Simple
-???
+In this scenario, the Ego Vehicle (far left) has to brake down when driving onto the middle vehicle, a little later the middle vehicle passes the vehicle in front on the left lane.
 ```
 LaneChangeSimple
 ```
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200628_184208.jpg)
 
 ### Pedestrian Crossing
-???
+This Scenario was not possible to execute.
 ```
 Pedestrian Crossing
 ```
 
 ### Follow Leading Vehicle
-???
+This scenario is the same procedure as the "Follow Leading Vehicle Scenario" described above.
 ```
 FollowLeadingVehicle
 ```
 
 
 ### Cyclist Crossing
-???
+This Scenario is not working correctly. After a traffic light the car has is driving right while a Cyclist is Crossing the street. However the car is crashing against this cyclist.
 ```
 CyclistCrossing
 ```
