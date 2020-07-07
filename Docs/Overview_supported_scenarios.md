@@ -1,7 +1,7 @@
 # Execution results of the supported scenarios
 
 You can find the detailed description of how to execute the supported scenarios here:
-[Instruction to execute the Supported scenarios](instruction_to_execute_the_supported_scenarios.md).
+[Instruction to execute the Supported scenarios](Execute_the_supported_scenarios.md).
 
 ## I.) Overview about the supported scenarios
 
