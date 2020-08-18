@@ -1,8 +1,4 @@
-1. Wie kann ich ein bestehendes Szenario umschreiben?
-
-[creating_new_scenario](creating_new_scenario.md)
-
-# Write your own scenario
+# Writing your own Scenario
 
 This tutorial describes how you can create and run a new scenario using the
 ScenarioRunner and the ScenarioManager suite.
@@ -10,7 +6,7 @@ ScenarioRunner and the ScenarioManager suite.
 Let us call the new scenario _NewScenario_. To create it, there are only few
 steps required.
 
-## Creating an empty Python class
+## I.) Creating an empty Python class
 Go to the Scenarios folder and create a new Python class with the name
 _NewScenario_ in a new Python file (_new_scenario.py_). The class should be
 derived from the _BasicScenario_ class. As a result, the class should look as
@@ -59,7 +55,7 @@ follows:
            """
    ```
 
-## Filling the Python class
+## II.) Filling the Python class
 
 In the NewScenario class, you have to define the following methods mentioned
 in the code example.
@@ -82,7 +78,7 @@ _atomic_scenario_criteria.py_.
 
 Note: From this list a parallel py_tree will be created automatically!
 
-## Adding the scenario configuration
+## III.) Adding the scenario configuration
 Finally the scenario configuration should be added to the examples/ folder. If you
 extend an already existing scenario module, you can simply extend the corresponding
 XML, otherwise add a new XML file. In this case you can use any of the existing
@@ -96,3 +92,7 @@ role names, e.g.
         <ego_vehicle x="237" y="-95.0754252474" z="0" yaw="90" model="vehicle.tesla.model3" rolename="hero2"/>
     </scenario>
 ```
+
+## IV.) Next references
+You can find "how to modify an existing scenario" here: 
+[4. Modify_an_existing_scenario](Modify_an_existing_scenario.md)

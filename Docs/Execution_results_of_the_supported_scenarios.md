@@ -562,4 +562,6 @@ This Scenario is not working correctly. After a traffic light the car has is dri
 CyclistCrossing
 ```
 
-
+## IV.) Next references
+You can find "how to write your own scenarios" here: 
+[3. Writing_your_own_scenario](Writing_your_own_scenario.md).
