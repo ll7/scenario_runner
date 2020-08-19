@@ -9,8 +9,6 @@
 This module provides the key configuration parameters for a scenario based on OpenSCENARIO
 """
 
-from __future__ import print_function
-
 import logging
 import os
 import xml.etree.ElementTree as ET
@@ -38,7 +36,6 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
         self.xml_tree = ET.parse(filename)
         self._filename = filename
 
-        self._set_global_parameters()
         self._validate_openscenario_configuration()
         self.client = client
 
@@ -56,6 +53,9 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
         logging.basicConfig()
         self.logger = logging.getLogger("[SR:OpenScenarioConfiguration]")
 
+        self._global_parameters = {}
+
+        self._set_parameters()
         self._parse_openscenario_configuration()
 
     def _validate_openscenario_configuration(self):
@@ -82,6 +82,8 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
         """
         Parse the given OpenSCENARIO config file, set and validate parameters
         """
+        OpenScenarioParser.set_osc_filepath(os.path.dirname(self._filename))
+
         self._check_version()
         self._load_catalogs()
         self._set_scenario_name()
@@ -178,41 +180,21 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
         else:
             CarlaDataProvider.set_world(world)
 
-    def _set_global_parameters(self):
+    def _set_parameters(self):
         """
-        Parse the complete scenario definition file, and replace all global parameter references
+        Parse the complete scenario definition file, and replace all parameter references
         with the actual values
+
+        Set _global_parameters.
         """
 
-        global_parameters = dict()
-        parameters = self.xml_tree.find('ParameterDeclarations')
+        self.xml_tree, self._global_parameters = OpenScenarioParser.set_parameters(self.xml_tree)
 
-        if parameters is None:
-            return
+        for elem in self.xml_tree.iter():
+            if elem.find('ParameterDeclarations') is not None:
+                elem, _ = OpenScenarioParser.set_parameters(elem)
 
-        for parameter in parameters:
-            name = parameter.attrib.get('name')
-            value = parameter.attrib.get('value')
-
-            global_parameters[name] = value
-
-        for node in self.xml_tree.find('RoadNetwork').iter():
-            for key in node.attrib:
-                for param in global_parameters:
-                    if node.attrib[key] == param:
-                        node.attrib[key] = global_parameters[param]
-
-        for node in self.xml_tree.find('Entities').iter():
-            for key in node.attrib:
-                for param in global_parameters:
-                    if node.attrib[key] == param:
-                        node.attrib[key] = global_parameters[param]
-
-        for node in self.xml_tree.find('Storyboard').iter():
-            for key in node.attrib:
-                for param in global_parameters:
-                    if node.attrib[key] == param:
-                        node.attrib[key] = global_parameters[param]
+        OpenScenarioParser.set_global_parameters(self._global_parameters)
 
     def _set_actor_information(self):
         """
@@ -230,8 +212,7 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
                     args[key] = value
 
                 for catalog_reference in obj.iter("CatalogReference"):
-                    entry = self.catalogs[catalog_reference.attrib.get(
-                        "catalogName")][catalog_reference.attrib.get("entryName")]
+                    entry = OpenScenarioParser.get_catalog_entry(self.catalogs, catalog_reference)
                     if entry.tag == "Vehicle":
                         self._extract_vehicle_information(entry, rolename, entry, args)
                     elif entry.tag == "Pedestrian":
@@ -251,6 +232,26 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
                 for misc in obj.iter("MiscObject"):
                     self._extract_misc_information(obj, rolename, misc, args)
 
+        # Set transform for all actors
+        # This has to be done in a multi-stage loop to resolve relative position settings
+        all_actor_transforms_set = False
+        while not all_actor_transforms_set:
+            all_actor_transforms_set = True
+            for actor in self.other_actors + self.ego_vehicles:
+                if actor.transform is None:
+                    try:
+                        actor.transform = self._get_actor_transform(actor.rolename)
+                    except AttributeError as e:
+                        if "Object '" in str(e):
+                            ref_actor_rolename = str(e).split('\'')[1]
+                            for ref_actor in self.other_actors + self.ego_vehicles:
+                                if ref_actor.rolename == ref_actor_rolename:
+                                    if ref_actor.transform is not None:
+                                        raise e
+                                    break
+                    if actor.transform is None:
+                        all_actor_transforms_set = False
+
     def _extract_vehicle_information(self, obj, rolename, vehicle, args):
         """
         Helper function to _set_actor_information for getting vehicle information from XML tree
@@ -267,8 +268,7 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
 
         speed = self._get_actor_speed(rolename)
         new_actor = ActorConfigurationData(
-            model, carla.Transform(), rolename, speed, color=color, category=category, args=args)
-        new_actor.transform = self._get_actor_transform(rolename)
+            model, None, rolename, speed, color=color, category=category, args=args)
 
         if ego_vehicle:
             self.ego_vehicles.append(new_actor)
@@ -282,8 +282,7 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
         model = pedestrian.attrib.get('model', "walker.*")
 
         speed = self._get_actor_speed(rolename)
-        new_actor = ActorConfigurationData(model, carla.Transform(), rolename, speed, category="pedestrian", args=args)
-        new_actor.transform = self._get_actor_transform(rolename)
+        new_actor = ActorConfigurationData(model, None, rolename, speed, category="pedestrian", args=args)
 
         self.other_actors.append(new_actor)
 
@@ -298,8 +297,7 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
             model = "static.prop.chainbarrier"
         else:
             model = misc.attrib.get('name')
-        new_actor = ActorConfigurationData(model, carla.Transform(), rolename, category="misc", args=args)
-        new_actor.transform = self._get_actor_transform(rolename)
+        new_actor = ActorConfigurationData(model, None, rolename, category="misc", args=args)
 
         self.other_actors.append(new_actor)
 
@@ -329,7 +327,7 @@ class OpenScenarioConfiguration(ScenarioConfiguration):
                 actor_found = True
                 for position in private_action.iter('Position'):
                     transform = OpenScenarioParser.convert_position_to_transform(
-                        position, actor_list=self.other_actors)
+                        position, actor_list=self.other_actors + self.ego_vehicles)
                     if transform:
                         actor_transform = transform
 

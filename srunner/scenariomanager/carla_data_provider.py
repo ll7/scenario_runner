@@ -13,8 +13,8 @@ local buffers to avoid blocking calls to CARLA
 from __future__ import print_function
 
 import math
-import random
 import re
+import numpy.random as random
 from six import iteritems
 
 import carla
@@ -59,6 +59,8 @@ class CarlaDataProvider(object):  # pylint: disable=too-many-public-methods
     _spawn_index = 0
     _blueprint_library = None
     _ego_vehicle_route = None
+    _traffic_manager_port = 8000
+    _rng = random.RandomState(2000)
 
     @staticmethod
     def register_actor(actor):
@@ -402,7 +404,7 @@ class CarlaDataProvider(object):  # pylint: disable=too-many-public-methods
         Generate spawn points for the current map
         """
         spawn_points = list(CarlaDataProvider.get_map(CarlaDataProvider._world).get_spawn_points())
-        random.shuffle(spawn_points)
+        CarlaDataProvider._rng.shuffle(spawn_points)
         CarlaDataProvider._spawn_points = spawn_points
         CarlaDataProvider._spawn_index = 0
 
@@ -428,15 +430,15 @@ class CarlaDataProvider(object):  # pylint: disable=too-many-public-methods
 
         # Set the model
         try:
-            blueprint = random.choice(CarlaDataProvider._blueprint_library.filter(model))
-        except IndexError:
+            blueprint = CarlaDataProvider._rng.choice(CarlaDataProvider._blueprint_library.filter(model))
+        except ValueError:
             # The model is not part of the blueprint library. Let's take a default one for the given category
             bp_filter = "vehicle.*"
             new_model = _actor_blueprint_categories[actor_category]
             if new_model != '':
                 bp_filter = new_model
             print("WARNING: Actor model {} not available. Using instead {}".format(model, new_model))
-            blueprint = random.choice(CarlaDataProvider._blueprint_library.filter(bp_filter))
+            blueprint = CarlaDataProvider._rng.choice(CarlaDataProvider._blueprint_library.filter(bp_filter))
 
         # Set the color
         if color:
@@ -455,8 +457,8 @@ class CarlaDataProvider(object):  # pylint: disable=too-many-public-methods
                         color, blueprint.id, default_color))
                     blueprint.set_attribute('color', default_color)
         else:
-            if blueprint.has_attribute('color'):
-                color = random.choice(blueprint.get_attribute('color').recommended_values)
+            if blueprint.has_attribute('color') and rolename != 'hero':
+                color = CarlaDataProvider._rng.choice(blueprint.get_attribute('color').recommended_values)
                 blueprint.set_attribute('color', color)
 
         # Make pedestrians mortal
@@ -514,7 +516,7 @@ class CarlaDataProvider(object):  # pylint: disable=too-many-public-methods
         if random_location:
             actor = None
             while not actor:
-                spawn_point = random.choice(CarlaDataProvider._spawn_points)
+                spawn_point = CarlaDataProvider._rng.choice(CarlaDataProvider._spawn_points)
                 actor = CarlaDataProvider._world.try_spawn_actor(blueprint, spawn_point)
 
         else:
@@ -546,6 +548,7 @@ class CarlaDataProvider(object):  # pylint: disable=too-many-public-methods
             return None
 
         CarlaDataProvider._carla_actor_pool[actor.id] = actor
+        CarlaDataProvider.register_actor(actor)
         return actor
 
     @staticmethod
@@ -593,7 +596,8 @@ class CarlaDataProvider(object):  # pylint: disable=too-many-public-methods
 
             # Get the command
             command = SpawnActor(blueprint, _spawn_point)
-            command.then(SetAutopilot(FutureActor, actor.autopilot))
+            command.then(SetAutopilot(FutureActor, actor.autopilot,
+                                      CarlaDataProvider._traffic_manager_port))
 
             if actor.category == 'misc':
                 command.then(PhysicsCommand(FutureActor, True))
@@ -611,6 +615,7 @@ class CarlaDataProvider(object):  # pylint: disable=too-many-public-methods
             if actor is None:
                 continue
             CarlaDataProvider._carla_actor_pool[actor.id] = actor
+            CarlaDataProvider.register_actor(actor)
         return actors
 
     @staticmethod
@@ -653,7 +658,9 @@ class CarlaDataProvider(object):  # pylint: disable=too-many-public-methods
                     break
 
             if spawn_point:
-                batch.append(SpawnActor(blueprint, spawn_point).then(SetAutopilot(FutureActor, autopilot)))
+                batch.append(SpawnActor(blueprint, spawn_point).then(
+                    SetAutopilot(FutureActor, autopilot,
+                                 CarlaDataProvider._traffic_manager_port)))
 
         actors = CarlaDataProvider.handle_actor_batch(batch)
 
@@ -664,6 +671,7 @@ class CarlaDataProvider(object):  # pylint: disable=too-many-public-methods
             if actor is None:
                 continue
             CarlaDataProvider._carla_actor_pool[actor.id] = actor
+            CarlaDataProvider.register_actor(actor)
         return actors
 
     @staticmethod
@@ -734,6 +742,20 @@ class CarlaDataProvider(object):  # pylint: disable=too-many-public-methods
         CarlaDataProvider._carla_actor_pool = dict({k: v for k, v in CarlaDataProvider._carla_actor_pool.items() if v})
 
     @staticmethod
+    def get_traffic_manager_port():
+        """
+        Get the port of the traffic manager.
+        """
+        return CarlaDataProvider._traffic_manager_port
+
+    @staticmethod
+    def set_traffic_manager_port(tm_port):
+        """
+        Set the port to use for the traffic manager.
+        """
+        CarlaDataProvider._traffic_manager_port = tm_port
+
+    @staticmethod
     def cleanup():
         """
         Cleanup and remove all entries from all dictionaries
@@ -742,7 +764,9 @@ class CarlaDataProvider(object):  # pylint: disable=too-many-public-methods
         batch = []
 
         for actor_id in CarlaDataProvider._carla_actor_pool.copy():
-            batch.append(DestroyActor(CarlaDataProvider._carla_actor_pool[actor_id]))
+            actor = CarlaDataProvider._carla_actor_pool[actor_id]
+            if actor.is_alive:
+                batch.append(DestroyActor(actor))
 
         if CarlaDataProvider._client:
             try:

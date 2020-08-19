@@ -6,7 +6,7 @@ If you would like to use evaluation criteria for a scenario to evaluate pass/fai
 as StopTriggers (see below). However, not all features for these elements are yet available. If in doubt, please see the
 module documentation in srunner/tools/openscenario_parser.py
 
-An example for a supported scenario based on OpenSCENARIO is available [here](../srunner/examples/FollowLeadingVehicle.xosc)
+An example for a supported scenario based on OpenSCENARIO is available [here](https://github.com/carla-simulator/scenario_runner/blob/master/srunner/examples/FollowLeadingVehicle.xosc)
 
 In addition, it is recommended to take a look into the official documentation available [here](https://releases.asam.net/OpenSCENARIO/1.0.0/Model-Documentation/index.html) and [here](https://releases.asam.net/OpenSCENARIO/1.0.0/ASAM_OpenSCENARIO_BS-1-2_User-Guide_V1-0-0.html#_foreword).
 
@@ -72,7 +72,7 @@ This covers all part that are defined outside the OpenSCENARIO Storyboard
 <tr>
 <td><code>ParameterDeclarations</code></td>
 <td>&#9989;</td>
-<td>Parameters can currently only be defined at the beginning (i.e. globally).</td>
+<td></td>
 <tr>
 <td><small><code>RoadNetwork</code></small><br><code>LogicFile</code></td>
 <td>&#9989;</td>
@@ -161,7 +161,7 @@ contains of submodules, which are not listed, the support status applies to all 
 <td><small><code>InfrastructureAction</code><code>TrafficSignalAction</code></small><br><code>TrafficSignalStateAction</code></td>
 <td>&#10060;</td>
 <td>&#9989;</td>
-<td>Setting a traffic light state in CARLA works by providing the position of the relevant traffic light (Example: TrafficSignalStateAction name="pos=x,y" state="green").</td>
+<td>As traffic signals in CARLA towns have no unique ID, they have to be set by providing their position (Example: TrafficSignalStateAction name="pos=x,y" state="green"). The id can also be used for none CARLA town (Example: TrafficSignalStateAction name="id=n" state="green")</td>
 </tbody>
 </table>
 <br>
@@ -197,12 +197,12 @@ contains of submodules, which are not listed, the support status applies to all 
 <td><code>ActivateControllerAction</code></td>
 <td>&#10060;</td>
 <td>&#9989;</td>
-<td>Only supports the autopilot at the moment</td>
+<td>Can be used to activate/deactive the CARLA autopilot.</td>
 <tr>
 <td><code>ControllerAction</code></td>
-<td>&#10060;</td>
-<td>&#10060;</td>
-<td></td>
+<td>&#9989;</td>
+<td>&#9989;</td>
+<td>AssignControllerAction is supported, but a Python module has to be provided for the controller implementation, and in OverrideControllerValueAction all values need to be <code>False</code>.</td>
 <tr>
 <td><small><code>LateralAction</code></small><br><code>LaneChangeAction</code></td>
 <td>&#10060;</td>
@@ -233,16 +233,6 @@ contains of submodules, which are not listed, the support status applies to all 
 <td>&#10060;</td>
 <td>&#10060;</td>
 <td></td>
-<tr>
-<td><code>ActivateControllerAction</code></td>
-<td>&#10060;</td>
-<td>&#9989;</td>
-<td>Can be used to activate/deactive the CARLA autopilot</td>
-<tr>
-<td><code>ControllerAction</code></td>
-<td>&#9989;</td>
-<td>&#9989;</td>
-<td>AssignControllerAction is supported, but a Python module has to be provided for the controller implementation, and in OverrideControllerValueAction all values need to be 'False'</td>
 <tr>
 <td><code>TeleportAction</code></td>
 <td>&#9989;</td>
@@ -299,14 +289,14 @@ The following two tables list the support status for each.
 <tr>
 <td><code>DistanceCondition</code></td>
 <td>&#9989;</td>
-<td></td>
+<td>*freespace* attribute is still not supported</td>
 <tr>
 <td><code>EndOfRoadCondition</code></td>
-<td>&#10060;</td>
+<td>&#9989;</td>
 <td></td>
 <tr>
 <td><code>OffroadCondition</code></td>
-<td>&#10060;</td>
+<td>&#9989;</td>
 <td></td>
 <tr>
 <td><code>ReachPositionCondition</code></td>
@@ -315,7 +305,7 @@ The following two tables list the support status for each.
 <tr>
 <td><code>RelativeDistanceCondition</code></td>
 <td>&#9989;</td>
-<td></td>
+<td>*freespace* attribute is still not supported</td>
 <tr>
 <td><code>RelativeSpeedCondition</code></td>
 <td>&#9989;</td>
@@ -330,12 +320,12 @@ The following two tables list the support status for each.
 <td></td>
 <tr>
 <td><code>TimeHeadwayCondition</code></td>
-<td>&#10060;</td>
-<td></td>
+<td>&#9989;</td>
+<td>*freespace* attribute is still not supported</td>
 <tr>
 <td><code>TimeToCollisionCondition</code></td>
 <td>&#9989;</td>
-<td></td>
+<td>*freespace* attribute is still not supported</td>
 <tr>
 <td><code>TraveledDistanceCondition</code></td>
 <td>&#9989;</td>
@@ -366,12 +356,12 @@ The following two tables list the support status for each.
 <td>startTransition, stopTransition, endTransition and completeState are currently supported.</td>
 <tr>
 <td><code>TimeOfDayCondition</code></td>
-<td>&#10060;</td>
+<td>&#9989;</td>
 <td></td>
 <tr>
 <td><code>TrafficSignalCondition</code></td>
-<td>&#10060;</td>
-<td></td>
+<td>&#9989;</td>
+<td>As traffic signals in CARLA towns have no unique ID, they have to be set by providing their position (Example: TrafficSignalCondition name="pos=x,y" state="green"). The id can also be used for none CARLA town (Example: TrafficSignalCondition name="id=n" state="green")</td>
 <tr>
 <td><code>TrafficSignalControllerCondition</code></td>
 <td>&#10060;</td>
