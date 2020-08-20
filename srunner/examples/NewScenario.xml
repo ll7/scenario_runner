@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
-<scenario name="NewScenario_1" type="FollowLeadingVehicle" town="Town01">
-    <ego_vehicle x="126.4" y="55.2" z="1" yaw="180" model="vehicle.lincoln.mkz2017" rolename="hero"/>
+<scenario name="NewScenario_1" type="NewScenario" town="Town01">
+        <ego_vehicle x="126.4" y="55.2" z="1" yaw="180" model="vehicle.lincoln.mkz2017" rolename="hero"/>
 </scenario>

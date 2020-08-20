@@ -20,6 +20,7 @@ from srunner.scenariomanager.timer import TimeOut
 from srunner.scenarios.basic_scenario import BasicScenario
 from srunner.tools.scenario_helper import get_waypoint_in_distance
 
+
 class NewScenario(BasicScenario):
     """
     Some documentation on NewScenario
@@ -35,7 +36,7 @@ class NewScenario(BasicScenario):
     # some ego vehicle parameters
     # some parameters for the other vehicles
 
-    #ToDo
+    # ToDo
     timeout = 120  # Timeout of scenario in seconds
 
     def __init__(self, world, ego_vehicles, config, randomize=False, debug_mode=False, criteria_enable=True,
@@ -56,15 +57,14 @@ class NewScenario(BasicScenario):
         self.timeout = timeout
 
         # Call constructor of BasicScenario
-        super(NewScenario, self).__init__(
-          name="NewScenario",
-          ego_vehicles,
-          config,
-          world,
-          debug_mode,
-          criteria_enable=criteria_enable))
+        super(NewScenario, self).__init__("NewScenario",
+                                          ego_vehicles,
+                                          config,
+                                          world,
+                                          debug_mode,
+                                          criteria_enable=criteria_enable)
 
-    #ToDo
+    # ToDo
     def _initialize_actors(self, config):
         """
         Custom initialization
@@ -85,9 +85,7 @@ class NewScenario(BasicScenario):
         first_vehicle.set_simulate_physics(enabled=False)
         self.other_actors.append(first_vehicle)
 
-
-
-    #ToDo
+    # ToDo
     def create_behavior(self):
         """
         Setup the behavior for NewScenario
@@ -140,14 +138,12 @@ class NewScenario(BasicScenario):
 
         return sequence
 
-
-
     def create_test_criteria(self):
         """
         Setup the evaluation criteria for NewScenario
         """
 
-        #ToDo
+        # ToDo
         criteria = []
         collision_criterion = CollisionTest(self.ego_vehicles[0])
         criteria.append(collision_criterion)
