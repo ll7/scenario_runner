@@ -99,11 +99,12 @@ class ScenarioRunner(object):
             self.module_agent = importlib.import_module(module_name)
 
         # Create the ScenarioManager
-        self.manager = ScenarioManager(self._args.debug, self._args.timeout)
+        self.manager = ScenarioManager(self._args.debug, self._args.sync, self._args.timeout)
 
         # Create signal handler for SIGINT
         self._shutdown_requested = False
-        signal.signal(signal.SIGHUP, self._signal_handler)
+        if sys.platform != 'win32':
+            signal.signal(signal.SIGHUP, self._signal_handler)
         signal.signal(signal.SIGINT, self._signal_handler)
         signal.signal(signal.SIGTERM, self._signal_handler)
 
@@ -140,7 +141,7 @@ class ScenarioRunner(object):
         """
 
         # Path of all scenario at "srunner/scenarios" folder + the path of the additional scenario argument
-        scenarios_list = glob.glob("{}/srunner/scenarios/*.py".format(os.getenv('ROOT_SCENARIO_RUNNER', "./")))
+        scenarios_list = glob.glob("{}/srunner/scenarios/*.py".format(os.getenv('SCENARIO_RUNNER_ROOT', "./")))
         scenarios_list.append(self._args.additionalScenario)
 
         for scenario_file in scenarios_list:
@@ -222,6 +223,7 @@ class ScenarioRunner(object):
 
             for i, _ in enumerate(self.ego_vehicles):
                 self.ego_vehicles[i].set_transform(ego_vehicles[i].transform)
+                CarlaDataProvider.register_actor(self.ego_vehicles[i])
 
         # sync state
         if CarlaDataProvider.is_sync_mode():
@@ -234,6 +236,7 @@ class ScenarioRunner(object):
         Provide feedback about success/failure of a scenario
         """
 
+        # Create the filename
         current_time = str(datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))
         junit_filename = None
         config_name = config.name
@@ -286,6 +289,7 @@ class ScenarioRunner(object):
 
         CarlaDataProvider.set_client(self.client)
         CarlaDataProvider.set_world(self.world)
+        CarlaDataProvider.set_traffic_manager_port(int(self._args.trafficManagerPort))
 
         # Wait for the world to be ready
         if CarlaDataProvider.is_sync_mode():
@@ -350,7 +354,7 @@ class ScenarioRunner(object):
         try:
             # Load scenario and run it
             if self._args.record:
-                self.client.start_recorder("{}/{}.log".format(os.getenv('ROOT_SCENARIO_RUNNER', "./"), config.name))
+                self.client.start_recorder("{}/{}.log".format(os.getenv('SCENARIO_RUNNER_ROOT', "./"), config.name))
             self.manager.load_scenario(scenario, self.agent_instance)
             self.manager.run_scenario()
 
@@ -377,15 +381,12 @@ class ScenarioRunner(object):
         result = False
 
         # Load the scenario configurations provided in the config file
-        scenario_config_file = ScenarioConfigurationParser.find_scenario_config(
+        scenario_configurations = ScenarioConfigurationParser.parse_scenario_configuration(
             self._args.scenario,
             self._args.configFile)
-        if scenario_config_file is None:
+        if not scenario_configurations:
             print("Configuration for scenario {} cannot be found!".format(self._args.scenario))
             return result
-
-        scenario_configurations = ScenarioConfigurationParser.parse_scenario_configuration(scenario_config_file,
-                                                                                           self._args.scenario)
 
         # Execute each configuration
         for config in scenario_configurations:
@@ -464,6 +465,8 @@ def main():
                         help='IP of the host server (default: localhost)')
     parser.add_argument('--port', default='2000',
                         help='TCP port to listen to (default: 2000)')
+    parser.add_argument('--trafficManagerPort', default='8000',
+                        help='Port to use for the TrafficManager (default: 8000)')
     parser.add_argument('--sync', action='store_true',
                         help='Forces the simulation to run synchronously')
     parser.add_argument('--debug', action="store_true", help='Run with debug output')
