@@ -161,7 +161,7 @@ Then you can enter the following command in the above mentioned directory (~/CAR
 ```
 show_recorder_actors_blocked.py <param> "<name>" 
 ```
-This will show all the actors that are blocked or stopped in the recorder. We can define the time that an actor has not been moving and travelled distance by the actor thresholds to determine if a vehicle is considered as blocked or not.
+This will show all the actors that are blocked or stopped in the recorder. We can define the time that an actor has not been moving and travelled distance by the actor thresholds to determine if a vehicle is considered as blocked or not.   C
 
 You can replace the placeholder <"param"> with one of the following parameters:
 ```
