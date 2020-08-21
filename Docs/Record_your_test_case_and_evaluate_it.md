@@ -73,10 +73,12 @@ python start_replaying.py -f "test2.log" -c "828"
 ### Information Output
 In Contrast to Record and Replay you only have to execute Carla as a preparation to execute the following commands.
 
-This will show all the information recorded in file. It has two modes of detail, by default it only shows the frames where some event is recorded, the second is showing info about all frames (all positions and trafficlight states).
+Then you can enter the following command in the above mentioned directory (~/CARLA_0.9.9/PythonAPI/examples) while starting a scenario:
+
 ```
 show_recorder_file_info.py <param> "<name>" 
 ```
+This will show all the information recorded in file. It has two modes of detail, by default it only shows the frames where some event is recorded, the second is showing info about all frames (all positions and trafficlight states).
 
 You can replace the placeholder <"param"> with one of the following parameters:
 ```
@@ -105,10 +107,12 @@ For example, a section of the information that can be output for the actor with 
 ### Collision Output
 In Contrast to Record and Replay you only have to execute Carla as a preparation to execute the following commands.
 
-This will show all the collisions hapenned while recording (currently only involved by hero actors).
+Then you can enter the following command in the above mentioned directory (~/CARLA_0.9.9/PythonAPI/examples) while starting a scenario:
+
 ```
 show_recorder_collisions.py <param> "<name>" 
 ```
+This will show all the collisions hapenned while recording (currently only involved by hero actors).
 
 In simulations with a hero actor, the collisions are automatically saved, so we can query a recorded file to see if any hero actor had collisions with some other actor. You can replace the placeholder <"param"> with one of the following parameters:
 ```
@@ -152,10 +156,12 @@ There we can see that for each collision the time when happened, the type of the
 ### Blocked Actors Output
 In Contrast to Record and Replay you only have to execute Carla as a preparation to execute the following commands.
 
-This will show all the actors that are blocked or stopped in the recorder. We can define the time that an actor has not been moving and travelled distance by the actor thresholds to determine if a vehicle is considered as blocked or not.
+Then you can enter the following command in the above mentioned directory (~/CARLA_0.9.9/PythonAPI/examples) while starting a scenario:
+
 ```
 show_recorder_actors_blocked.py <param> "<name>" 
 ```
+This will show all the actors that are blocked or stopped in the recorder. We can define the time that an actor has not been moving and travelled distance by the actor thresholds to determine if a vehicle is considered as blocked or not.
 
 You can replace the placeholder <"param"> with one of the following parameters:
 ```
