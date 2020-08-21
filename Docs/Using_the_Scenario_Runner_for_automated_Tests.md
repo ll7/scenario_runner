@@ -30,4 +30,4 @@ The fourth part lists everything I have access to (e.g. traffic lights, agents, 
 The fifth part describes how I can run a test case automatically by running multiple scenarios in a test and evaluating them against certain metrics.
 
 ### [6. Record_your_test_case_and_evaluate_it](Record_your_test_case_and_evaluate_it.md)
-The sixth part briefly describes how the automated tests can be recorded.
+The sixth part briefly describes how the automated tests can be recorded and evaluated.
