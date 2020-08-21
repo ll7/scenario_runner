@@ -3,4 +3,4 @@
 
 ## XX.) Next references
 You can find "how to execute a test case" here: 
-[5. Execute_a_test_case](Execute_a_test_case.md)
+[5. Execute_a_test_case](Execute_an_automated_test_case.md)
