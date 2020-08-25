@@ -45,7 +45,7 @@ For example recording a Scenario "test1.log" without additional spawned vehicles
 python start_recording.py -f "test1.log" -n "0"
 ```
 
-## III.) Evaluating
+## III.) Evaluating through sample scripts
 With the following 4 sample scripts you can replay a recorded scenario, retrieve its information, the collisions and the blocked actors.
 
 ### Replaying
@@ -188,6 +188,62 @@ Duration: 17.5917 seconds
 ```
 There we can see when an actor was stopped for at least the minimum time specified.
 
-## IV.) Next references
+## IV.) Evaluating through modifying the test criterion
+As described in [4. Modify_an_existing_scenario](Modify_an_existing_scenario.md) you can modify within class of a scenario its evaluation criterion.
+
+In the following there are five instructions listed how you can make use of modifying the criterion to evaluate your scenarios.
+
+Per default there is the criterion "CollisionTest" in the scenario class "FollowLeadingVehicle" implemented. For a better understanding we compare this during the instructions with the new added criterion "DrivenDistanceTest".
+
+### Example: Add the criterion "DrivenDistanceTest"
+
+#### 1 Select the criterion and the desired scenario
+First you have to look which criterion you want to add to your desired scenario. In this example we choose the scenario "FollowLeadingVehicle" with the criterion "DrivenDistanceTest", which checks if the actor's driven distance is more than a defined value (in meters).
+
+#### 2 Add the imports in your selected scenario
+Second you have to import to your selected scenario (e.g. FollowLeadingVehicle) the criterion "DrivenDistanceTest".
+```
+from srunner.scenariomanager.scenarioatomics.atomic_criteria import CollisionTest
+from srunner.scenariomanager.scenarioatomics.atomic_criteria import DrivenDistanceTest
+```
+
+#### 3 Modify the _create_test_criteria() function
+Third you have to modify the following criteria function in the selected scenario class.
+
+In this example we added the lines 8 and 9 analogous to the lines 5 and 6 with the small difference that the DrivenDistanceTest() class in line 8 require an additional argument.
+
+For the information which arguments you have to add to your choosen criterion just have a look in the _atomic_scenario_criteria.py_ script. 
+
+```
+1 def _create_test_criteria(self):
+2
+3    criteria = []
+4
+5    collision_criterion = CollisionTest(self.ego_vehicles[0])
+6    criteria.append(collision_criterion)
+7
+8    distance_criterion = DrivenDistanceTest(self.ego_vehicles[0],1)
+9    criteria.append(distance_criterion)
+10
+11   return criteria
+```
+
+#### 4 Execute the modifyied scenario
+Now you can start the scenario as described in [2. Execute_the_supported_scenarios](Execute_the_supported_scenarios.md) with the little difference that you have to add the parameter "-- output".
+```
+python scenario_runner.py --scenario FollowLeadingVehicle_1 --output --reloadWorld
+```
+After that you can start the manual_control.py and exceute the scenario.
+```
+python manual_control.py
+```
+
+#### 5 Evaluation displayed on command line
+Now you can see the evaluation criterion on command line.
+
+![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_173401.jpg)
+
+
+## V.) Next references
 You can find "how you can run a test case automatically by running multiple scenarios in a test and evaluating them against certain metrics".
 [6. Execute_an_automated_test_case](Execute_an_automated_test_case.md)

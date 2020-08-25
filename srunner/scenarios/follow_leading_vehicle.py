@@ -29,6 +29,7 @@ from srunner.scenariomanager.scenarioatomics.atomic_behaviors import (ActorTrans
                                                                       StopVehicle,
                                                                       WaypointFollower)
 from srunner.scenariomanager.scenarioatomics.atomic_criteria import CollisionTest
+from srunner.scenariomanager.scenarioatomics.atomic_criteria import DrivenDistanceTest
 from srunner.scenariomanager.scenarioatomics.atomic_trigger_conditions import (InTriggerDistanceToVehicle,
                                                                                InTriggerDistanceToNextIntersection,
                                                                                DriveDistance,
@@ -160,8 +161,10 @@ class FollowLeadingVehicle(BasicScenario):
         criteria = []
 
         collision_criterion = CollisionTest(self.ego_vehicles[0])
-
         criteria.append(collision_criterion)
+
+        distance_criterion = DrivenDistanceTest(self.ego_vehicles[0],1)
+        criteria.append(distance_criterion)
 
         return criteria
 
