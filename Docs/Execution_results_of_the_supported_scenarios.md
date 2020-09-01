@@ -131,14 +131,16 @@ The ego vehicle is approaching a singalized Junction and turns right.
 
 ![](img/Images%20for%20execution%20results/IMG_20200605_184547.jpg)
 
-#### Executing SignalizedJunctionLeftTurn_2
+#### Executing SignalizedJunctionLeftTurn_2 and SignalizedJunctionLeftTurn_3 and SignalizedJunctionLeftTurn_4
 The Szenario was not possible to execute.
 
-#### Executing SignalizedJunctionLeftTurn_3
-The Szenario was not possible to execute.
+Error message:
+```
+Scenario not yet ready
+Scenario ended -- Terminating
+ERROR: failed to destroy actor 207 : unable to destroy actor: not found 
+```
 
-#### Executing SignalizedJunctionLeftTurn_4
-The Szenario was not possible to execute.
 
 #### Executing SignalizedJunctionLeftTurn_5
 The ego vehicle is approaching a singalized Junction and turns left in a collision with another vehicle.
@@ -176,14 +178,9 @@ The ego vehicle drives to a signalized Junction and stops till another vehicle c
 #### Executing SignalizedJunctionRightTurn_3
 The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
 
-    ![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
-#### Executing SignalizedJunctionRightTurn_4
-The Szenario was not possible to execute.
-
-![]()
-
-#### Executing SignalizedJunctionRightTurn_5
+#### Executing SignalizedJunctionRightTurn_4 and SignalizedJunctionRightTurn_5
 The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
 
 ![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
@@ -471,9 +468,16 @@ NoSignalJunctionCrossing
 
 ### Change Lane
 This Scenario was not possible to execute.
+
 ```
 ChangeLane
 ChangeLane_2
+```
+
+Error message:
+```
+IndexError: list index out of range
+list index out of range
 ```
 
 ### Challenge Basic
@@ -485,23 +489,34 @@ Challenge_Basic_03
 Challenge_Basic_04
 ```
 
+Error message:
+```
+Configuration for scenario Challenge_Basic cannot be found!
+```
+
 ### Background Activity
 This Scenario was not possible to execute.
 ```
 BackgroundActivity_1
 ```
 
-### Cut in from left Lane
-This Scenario was not possible to execute.
+Error message:
 ```
-CutInFrom_left_Lane
+Configuration for scenario BackgroundActivity_1 cannot be found!
 ```
+
 ### Cut in from right Lane
 In this scenario, the Ego Vehicle drives in the middle lane on the highway while another vehicle overtakes it from the right and pulls into the middle lane so that the Ego Vehicle has to brake down briefly.
 ```
 CutInFrom_right_Lane
 ```
 ![](img/Images%20for%20execution%20results/IMG_20200628_184223.jpg)
+
+### Cut in from left Lane
+This Scenario executes the same maneauver as the described scenario "Cut in from right Lane" above. The only difference is that the other vehicle overtakes it from the left lane and pulls into the middle lane so that the Ego Vehicle has to brake down briefly.
+```
+CutInFrom_left_Lane
+```
 
 ### Free Ride Town
 This Scenario were not possible to execute.
@@ -547,6 +562,11 @@ LaneChangeSimple
 This Scenario was not possible to execute.
 ```
 Pedestrian Crossing
+```
+
+Error message:
+```
+Configuration for scenario Pedestrian cannot be found!
 ```
 
 ### Follow Leading Vehicle

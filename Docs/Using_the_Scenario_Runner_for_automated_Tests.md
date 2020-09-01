@@ -2,7 +2,9 @@
 
 The following is an overview of the Project module from the chair of mechatronics from the University of Augsburg and shows how to write automated tests with the CARLA Scenario Runner.
 
+## Preparation
 
+The documentation [Getting started](Docs/getting_scenariorunner.md) from the original ScenarioRunner describes how to download the ScenarioRunenr and install it.
 
 ## Quick Overview
 

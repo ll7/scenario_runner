@@ -458,7 +458,7 @@ def main():
     main function
     """
     #inserted time delay
-    time.sleep(5)
+    #time.sleep(5)
     description = ("CARLA Scenario Runner: Setup, Run and Evaluate scenarios using CARLA\n"
                    "Current version: " + str(VERSION))
 

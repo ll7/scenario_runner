@@ -68,7 +68,7 @@ So After starting the Carla Server navigate to the following path:
 ```
 In Contrast you have to execute this file with two additional arguments
 - The first argument $1 is the desired scenario, e.g. FollowLeadingVehicle_1
-- The scecond argument $2 (true or false) defines if you want to record it or not
+- The second argument $2 (true or false) defines if you want to record it or not. It will be saved with the name of the first argument as a "log"-file.
 
 Of course, this possibility could also be built into the fully-automated script mentioned in paragraph II.).
 
@@ -91,14 +91,52 @@ python manual_control_steering_wheel.py &
 #3) Optional Record the Scenario
 if $2; then
     echo "The file will be recorded"
-    #python /home/carlaws19/CARLA_0.9.9/PythonAPI/examples/start_recording.py -f "$1" -n "0"
+    python /home/carlaws19/CARLA_0.9.9/PythonAPI/examples/start_recording.py -f "$1.log" -n "0"
 else
     echo "The file will not be recorded"
 fi
 ```
 
+##IV.) Running the ScenarioRunner automated
 
-## IV.) Pros and Cons of fully- and semi-automated Test Scenario
+TODO: DOC ÜBERARBEITEN!!! -> bash automated_scenario_runner.sh
+
+```
+#!/bin/bash
+#scenario := Count Variable for the scenarios
+#person := arument from command line to count the person
+#listScenarios := list of test scenarios
+
+scenario=1
+person=$1
+
+listScenarios="FollowLeadingVehicle_3 FollowLeadingVehicle_3 DynamicObjectCrossing_1 SignalizedJunctionLeftTurn_5 FollowLeadingVehicle_1 ManeuverOppositeDirection_2"
+
+for scenario_name in $listScenarios; do
+
+    #execute the scenario_runner.sh with the 4 arguments (name, true/false, scenario count, which person)
+    bash scenario_runner.sh $scenario_name true $scenario $person
+
+    echo "Press any key to continue with the next scenario"
+
+    while [ true ] ; do
+        read -t 3 -n 1
+        if [ $? = 0 ] ; then
+        echo "Press any Key to continue with the next scenario"
+        break
+        #bash scenario_runner.sh $scenario_name true $scenario $person
+        else
+        echo "Waiting for the keypress to continue with the next scenario"
+        fi
+    done
+    let "scenario++"
+
+done
+```
+
+
+
+## V.) Pros and Cons of fully- and semi-automated Test Scenario
 This section explains why we use a semi-automated test scenario once in paragraph II.) and a fully-automated test scenario once in paragraph III.)
 
 The main reason is that with the fully-automated Test Scenario we receive the following memory error message after about 3 executions and and then restart the computer:
