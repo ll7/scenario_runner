@@ -59,3 +59,8 @@ License
 -------
 
 ScenarioRunner specific code is distributed under MIT License.
+
+Using the ScenarioRunner for automated tests
+-------
+For a Project module from the chair of mechatronics from the University of Augsburg and a addiational documenation were wirrten for automated tests with the CARLA Scenario Runner.
+[Using the ScenarioRunner for automated tests](https://github.com/ll7/scenario_runner/blob/master/Docs/Using_the_Scenario_Runner_for_automated_Tests.md).
