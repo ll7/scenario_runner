@@ -49,4 +49,4 @@ The seventh part describes how you can run a route based scenario and set up an 
 The a-part describes Basics of Bash Scripts, shows further useful topics and how you can run multiple terminals from one terminal automated.
 
 ### [b. Steering_Wheel](Steering_Wheel.md)
-The additional b-part describes how you can connect a Steering Wheel with the Carla Scenario Runner.
+The b-part describes how you can connect a Steering Wheel with the Carla Scenario Runner.

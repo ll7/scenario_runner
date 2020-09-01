@@ -241,7 +241,7 @@ python manual_control.py
 #### 5 Evaluation displayed on command line
 Now you can see the evaluation criterion on command line.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/outpus.jpg)
+![](img/Images%20for%20execution%20results/outpus.jpg)
 
 
 ## V.) Next references
