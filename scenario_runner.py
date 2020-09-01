@@ -28,6 +28,7 @@ import signal
 import sys
 import time
 import pkg_resources
+import time
 
 import carla
 
@@ -456,6 +457,8 @@ def main():
     """
     main function
     """
+    #inserted time delay
+    time.sleep(5)
     description = ("CARLA Scenario Runner: Setup, Run and Evaluate scenarios using CARLA\n"
                    "Current version: " + str(VERSION))
 

@@ -1,9 +1,13 @@
 # Execute an automated test case
 
-This documentation describes how you can run a test case automatically by running multiple scenarios in a test and evaluating them against certain metrics.
+This documentation describes three options of running your scenario runner automated.
+
+The first option is how you can run multiple scenarios of one class successively automated. 
+
+The second and third option is to run a fully- or an semi-automated scenario including recording and evaluation.
 
 ## I.)  Running all scenarios of one scenario class
-It is also possible to execute a sequence of scenarios, that belong to the same class, e.g. the "FollowLeadingVehicle" class.
+It is possible to execute a sequence of scenarios, that belong to the same class, e.g. the "FollowLeadingVehicle" class.
 
 ```
 python scenario_runner.py --scenario group:<scenario-class>
@@ -20,6 +24,100 @@ Then the scenarios of the selected class (e.g. FollowLeadingVehicle) are execute
 python manual_control.py
 ```
 
-## II.) Next references
+## II.) Running an fully-automated Test Scenario including recording and evaluation
+To run a fully-automated Test scenario we provide a bash script that executes 
+- (1) the Carla Server, 
+- (2) the Scenario Runner,
+- (3) the Manual Control for a Steering Wheel ([Steering_Wheel.md](Steering_Wheel.md)) and
+- (4) the Recording of a Scenario.
+
+Navigate to the following directory: 
+```
+/home/carlaws19/scenario_runner
+```
+Then execute the following script:
+```
+bash scenario_runner_with_carla.sh
+```
+
+The script in detail:
+```
+#!/bin/bash
+echo "Start the Carla Server, the Scenario Runner, the Manual Control for Steering Wheel and the Record"
+
+#1) Start the Carla Server
+/home/carlaws19/CARLA_0.9.9/CarlaUE4.sh &
+
+#2) Start the Scenario Runner
+python scenario_runner.py --scenario FollowLeadingVehicle_1 --output --reloadWorld &
+
+#3) Start the Manual Control for Steerin Wheel
+python manual_control_steering_wheel.py &
+
+#4) Optional Record the Scenario
+python /home/carlaws19/CARLA_0.9.9/PythonAPI/examples/start_recording.py -f "FollowLeadingVehicle_1.log" -n "0"
+```
+
+
+## III.) Running an semi-automated Test Scenario including recording and evaluation
+We call this third option semi-automated, because you have to start the carla Server (as known) separately.
+
+So After starting the Carla Server navigate to the following path:
+```
+/home/carlaws19/scenario_runner/scenario_runner_with_carla.sh
+```
+In Contrast you have to execute this file with two additional arguments
+- The first argument $1 is the desired scenario, e.g. FollowLeadingVehicle_1
+- The scecond argument $2 (true or false) defines if you want to record it or not
+
+Of course, this possibility could also be built into the fully-automated script mentioned in paragraph II.).
+
+Then you can execute the following script from the scenario runner directory:
+```
+scenario_runner.sh <param1> <param2>
+```
+
+The Script in detail:
+```
+#!/bin/bash
+#1) Start the Scenario Runner
+echo "The $1 scenario will be executed"
+python scenario_runner.py --scenario $1 --output --reloadWorld &
+
+#2) Start the Manual Control for Steerin Wheel
+echo "The manual control will be executed"
+python manual_control_steering_wheel.py &
+
+#3) Optional Record the Scenario
+if $2; then
+    echo "The file will be recorded"
+    #python /home/carlaws19/CARLA_0.9.9/PythonAPI/examples/start_recording.py -f "$1" -n "0"
+else
+    echo "The file will not be recorded"
+fi
+```
+
+
+## IV.) Pros and Cons of fully- and semi-automated Test Scenario
+This section explains why we use a semi-automated test scenario once in paragraph II.) and a fully-automated test scenario once in paragraph III.)
+
+The main reason is that with the fully-automated Test Scenario we receive the following memory error message after about 3 executions and and then restart the computer:
+
+```
+Exception thrown: bind: Address already in use
+Signal 11 caught.
+Malloc Size=65538 LargeMemoryPoolOffset=65554 
+CommonUnixCrashHandler: Signal=11
+Malloc Size=65535 LargeMemoryPoolOffset=131119 
+Malloc Size=147680 LargeMemoryPoolOffset=278816 
+Engine crash handling finished; re-raising signal 11 for the default handler. Good bye.
+```
+
+On the other hand, the big advantage of the fully-automated version is that only one command has to be executed for a full test scenario.
+
+Besides this big advantage we found it more exciting to work with a semi-automated script and to make the whole thing modular and yet easy to handle. Therefore we recommend to use the semi-automated script for the Scenario Runner. 
+
+
+## VI.) Next references
 You can find "how to run a route based scenario (similar to CARLA AD Challenge) and set up an agent for evaluation".
 [7. Running_route-based_scenarios_(similar_to_the_CARLA_AD_Challenge)_and_agent_evaluation](Running_route-based_scenarios_(similar_to_the_CARLA_AD_Challenge)_and_agent_evaluation.md)
