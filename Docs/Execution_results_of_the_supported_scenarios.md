@@ -33,7 +33,7 @@ Only ManeuverOppositeDirection_2 and ManeuverOppositeDirection_4 are working. Th
 #### Executing ManeuverOppositeDirection_2 & ManeuverOppositeDirection_4 with the autopilot
 By starting the autopilot, car 1 is crashing into the obstacle while car 2 and 3 are passing the other lane.
 
-![maneuveroppositedirection](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/ManeuverOppositeDirection.jpeg) 
+![maneuveroppositedirection](img/Images%20for%20execution%20results/ManeuverOppositeDirection.jpeg) 
 
 ### Follow Leading Vehicle
 The scenario realizes a common driving behavior, in which the user-controlled
@@ -70,48 +70,48 @@ The obstacle in every scenario is a cyclist (marked with a "X")  who forces the 
 
 #### Executing FollowLeadingVehicle_1 and FollowLeadingVehicleWithObstacle_1
 The ego vehicle follows a leading car driving down a one-lane straight road in the city.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_131326.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200529_131326.jpg)
 
 #### Executing FollowLeadingVehicle_2 and FollowLeadingVehicleWithObstacle_2
 The ego vehicle follows a leading car driving down a one-lane straight road in the city.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_131326.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200529_131326.jpg)
 
 #### Executing FollowLeadingVehicle_3 and FollowLeadingVehicleWithObstacle_3
 The ego vehicle follows a leading car driving down a one-lane bend in the city.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_131349.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200529_131349.jpg)
 
 #### Executing FollowLeadingVehicle_4 and FollowLeadingVehicleWithObstacle_4
 The ego vehicle follows a leading car driving down a two-lane straight road in the city.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_131415.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200529_131415.jpg)
 
 #### Executing FollowLeadingVehicle_5 and FollowLeadingVehicleWithObstacle_5
 The ego vehicle follows a leading car driving down a four-lane straight road on a highway.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_131446.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200529_131446.jpg)
 
 #### Executing FollowLeadingVehicle_6 and FollowLeadingVehicleWithObstacle_6
 The ego vehicle follows a leading car driving down a single-tracked curve with a steep climb in the mountains.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_131509.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200529_131509.jpg)
 
 #### Executing FollowLeadingVehicle_7 and FollowLeadingVehicleWithObstacle_7
 The ego vehicle follows a leading car driving down a four-lane curve on a highway.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_131917.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200529_131917.jpg)
 
 #### Executing FollowLeadingVehicle_8 and FollowLeadingVehicleWithObstacle_8
 The ego vehicle follows a leading car driving down a three-lane curve on a highway.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_131936.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200529_131936.jpg)
 
 #### Executing FollowLeadingVehicle_9 and FollowLeadingVehicleWithObstacle_9
 The ego vehicle follows a leading car driving down a three-lane straight road in the middle on a highway.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_131952.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200529_131952.jpg)
 
 #### Executing FollowLeadingVehicle_10 and FollowLeadingVehicleWithObstacle_10
 The ego vehicle follows a leading car driving down a three-lane straight road on the right lane on a highway.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_132011.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200529_132011.jpg)
 
 #### Executing FollowLeadingVehicle_11 and FollowLeadingVehicleWithObstacle_11
 The ego vehicle follows a leading car driving down a one-lane straight road in the city.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200529_132027.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200529_132027.jpg)
 
 ### Signalized Junction Left Turn
 In this scenario hero vehicle is turning left in an urban area,
@@ -129,7 +129,7 @@ SignalizedJunctionLeftTurn_6
 #### Executing SignalizedJunctionLeftTurn_1
 The ego vehicle is approaching a singalized Junction and turns right.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_184547.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200605_184547.jpg)
 
 #### Executing SignalizedJunctionLeftTurn_2
 The Szenario was not possible to execute.
@@ -142,11 +142,11 @@ The Szenario was not possible to execute.
 
 #### Executing SignalizedJunctionLeftTurn_5
 The ego vehicle is approaching a singalized Junction and turns left in a collision with another vehicle.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_185240.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200605_185240.jpg)
 
 #### Executing SignalizedJunctionLeftTurn_6
 The ego vehicle is approaching a singalized Junction and drives straight ahead.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_185958.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200605_185958.jpg)
 
 ### Signalized Junction Right Turn
 In this scenario right turn of hero actor without collision at signalized intersection
@@ -166,17 +166,17 @@ SignalizedJunctionRightTurn_7
 #### Executing SignalizedJunctionRightTurn_1
 The ego vehicle is approaching a singalized Junction and turns left after the green light appeared.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
 #### Executing SignalizedJunctionRightTurn_2
 The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
 #### Executing SignalizedJunctionRightTurn_3
 The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
 
-    ![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
+    ![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
 #### Executing SignalizedJunctionRightTurn_4
 The Szenario was not possible to execute.
@@ -186,17 +186,17 @@ The Szenario was not possible to execute.
 #### Executing SignalizedJunctionRightTurn_5
 The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
 #### Executing SignalizedJunctionRightTurn_6
 The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
 #### Executing SignalizedJunctionRightTurn_7
 The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
 ### Vehicle Turning Right
 In this scenario the ego vehicle takes a right turn from an intersection where
@@ -217,17 +217,17 @@ VehicleTurningRight_8
 #### Executing VehicleTurningRight_1
 The ego vehicle drives to a signalized Junction and stops till the green light turns on. Then the vehicle turns left.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190654.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200605_190654.jpg)
 
 #### Executing VehicleTurningRight_2
 The ego vehicle drives to a signalized Junction and stops till the green light turns on. Then the vehicle turns left.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_190654.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200605_190654.jpg)
 
 #### Executing VehicleTurningRight_3
 The ego vehicle drives to a signalized Junction and stops till the green light turns on. Then the vehicle turns right.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_191207.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200605_191207.jpg)
 
 #### Executing VehicleTurningRight_4 and VehicleTurningRight_5 and VehicleTurningRight_6
 In this Szenario's the vehicle is only driving to the sinalized Junction and stops.
@@ -235,7 +235,7 @@ In this Szenario's the vehicle is only driving to the sinalized Junction and sto
 #### Executing VehicleTurningRight_7
 The ego vehicle drives to a Junction and stops till a bycycle can drive over the street and then the vehicle turns right.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200605_192512.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200605_192512.jpg)
 
 ### Vehicle Turning Left
 This scenario is similar to 'VehicleTurningRight'. The difference is that the ego
@@ -254,23 +254,23 @@ VehicleTurningLeft_8
 #### Executing VehicleTurningLeft_1 and VehicleTurningLeft_6
 The ego vehicle takes a left turn from an intersection after the green signal turns on. In Addition the vehicle stops as a cyclist (marked with a "X") crosses the road.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_124757.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200606_124757.jpg)
 
 #### Executing VehicleTurningLeft_2
 The ego vehicle takes a right turn from an intersection after the green signal turns on. 
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_125358.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200606_125358.jpg)
 
 #### Executing VehicleTurningLeft_3 and VehicleTurningLeft_4 and VehicleTurningLeft_5
 The ego vehicle takes a right turn from an intersection after the green signal turns on. 
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_125358.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200606_125358.jpg)
 
 
 #### Executing VehicleTurningLeft_7 and Vehicle TurningLeft_8
 The ego vehicle drives to an intersection and stops. In Addition in the scenario VehicleTUrningLeft7 the vehicle stops as a cyclist (marked with a "X") crosses the road.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_130214.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200606_130214.jpg)
 
 
 ### Opposite Vehicle Running Red Light
@@ -290,17 +290,17 @@ OppositeVehicleRunningRedLight_5
 ### Executing OppositeVehicleRunningRedLight_1
 Another vehicle waits at an intersection, but illegally runs a red traffic light. The approaching ego vehicle stops and turns right after the other vehicle passed the intersection.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_133630.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200606_133630.jpg)
 
 ### Executing OppositeVehicleRunningRedLight_2
 Another vehicle waits at an intersection, but illegally runs a red traffic light. The approaching ego vehicle stops and drives straight on after the other vehicle passed the intersection.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_133855.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200606_133855.jpg)
 
 ### Executing OppositeVehicleRunningRedLight_3
 Another vehicle waits at an intersection, but illegally runs a red traffic light. The approaching ego vehicle stops and turns right after the other vehicle passed the intersection.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_134016.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200606_134016.jpg)
 
 ### Executing OppositeVehicleRunningRedLight_4
 The scenario works not correctly.
@@ -308,7 +308,7 @@ The scenario works not correctly.
 ### Executing OppositeVehicleRunningRedLight_5
 Another vehicle waits at an intersection, but illegally runs a red traffic light. The approaching ego vehicle stops and drives straight on after the other vehicle passed the intersection.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_134041.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200606_134041.jpg)
 
 
 ### Other Leading Vehicle
@@ -334,7 +334,7 @@ OtherLeadingVehicle_10
 ### Executing OtherLeadingVehicle_1 and OtherLeadingVehicle_2 and OtherLeadingVehicle_8 and OtherLeadingVehicle_9 and OtherLeadingVehicle_10
 The user-controlled ego vehicle (shown in the rectangle) follows a leading car driving down a three-lane given road. Next to the leading car is another car.
 At some point the leading cars decelerate. The ego vehicle reacts by decelearting too.
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_173401.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200608_173401.jpg)
 
 ### Executing OtherLeadingVehicle_3 and OtherLeadingVehicle_7
 Its in fact the same scenarios as in the both Scenarios above. The little difference now is that there is a two-lane instead of a three-lane given.
@@ -366,7 +366,7 @@ ControlLoss_15
 ### Executing ControlLoss_1 and ControlLoss_15
 In this Scenario the ego vehicle has to drive over a poorly maintained road (marked with rectangles).
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_183445.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200608_183445.jpg)
 
 ### Executing ControlLoss_2 and ControlLoss_3 and ControlLoss_7 and ControlLoss_8
 They are the same Scenario as described before. The difference is that after the second bad condition there is immediately followed another one.
@@ -377,22 +377,22 @@ In this scenarios the car starts jerking, but there is no bad condition visible.
 ### Executing ControlLoss_9 and ControlLoss_12
 In this Scenario the ego vehicle has to drive over a poorly maintained road (marked with rectangles).
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_183842(1).jpg)
+![](img/Images%20for%20execution%20results/IMG_20200608_183842(1).jpg)
 
 ### Executing ControlLoss_10 and ControlLoss_11
 In this Scenario the ego vehicle has to drive over a poorly maintained road (marked with rectangles). The three bad entities have approximately the same distance from each other.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_184709.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200608_184709.jpg)
 
 ### Executing ControlLoss_10 and ControlLoss_13
 In this Scenario the ego vehicle has to drive over a poorly maintained road (marked with rectangles).
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_190227.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200608_190227.jpg)
 
 ### Executing ControlLoss_10 and ControlLoss_14
 In this Scenario the ego vehicle has to drive over a poorly maintained road (marked with rectangles).
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200608_190302.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200608_190302.jpg)
 
 ### Stationary Object Crossing
 In this scenario a container is stationary waiting in the middle of the road and
@@ -412,22 +412,22 @@ StationaryObjectCrossing_8
 ### Executing StationaryObjectCrossing_1 and StationaryObjectCrossing_2 and StationaryObjectCrossing_7
 In this Scenario the ego vehicle collides against a container in the middle of the road.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200614_203545.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200614_203545.jpg)
 
 ### Executing StationaryObjectCrossing_3
 In this Scenario the container is on a intersection.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200614_203851(1).jpg)
+![](img/Images%20for%20execution%20results/IMG_20200614_203851(1).jpg)
 
 ### Executing StationaryObjectCrossing_4
 In this Scenario the container is in the middle of a curve.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200614_203642.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200614_203642.jpg)
 
 ### Executing StationaryObjectCrossing_5 and StationaryObjectCrossing_6
 In this Scenario the container is on a highway.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200614_203941.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200614_203941.jpg)
 
 ### Executing StationaryObjectCrossing_8
 This Scenario is not possible to execute.
@@ -452,7 +452,7 @@ DynamicObjectCrossing_9
 ### Executing DynamicObjectCrossing_1 and DynamicObjectCrossing_2 and DynamicObjectCrossing_3 and DynamicObjectCrossing_4 and DynamicObjectCrossing_7 and DynamicObjectCrossing_9
 In this Scenario a human is running into the way of the ego vehicle, which has to stop accordingly.
 
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200614_204035.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200614_204035.jpg)
 
 ### Executing DynamicObjectCrossing_5 and DynamicObjectCrossing_6 and DynamicObjectCrossing_8
 This Scenarios are not working correctly. 
@@ -466,7 +466,7 @@ to avoid collision and navigate across the junction to succeed. The 1 possible s
 ```
 NoSignalJunctionCrossing
 ```
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200606_133018(3).jpg)
+![](img/Images%20for%20execution%20results/IMG_20200606_133018(3).jpg)
 
 
 ### Change Lane
@@ -501,7 +501,7 @@ In this scenario, the Ego Vehicle drives in the middle lane on the highway while
 ```
 CutInFrom_right_Lane
 ```
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200628_184223.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200628_184223.jpg)
 
 ### Free Ride Town
 This Scenario were not possible to execute.
@@ -541,7 +541,7 @@ In this scenario, the Ego Vehicle (far left) has to brake down when driving onto
 ```
 LaneChangeSimple
 ```
-![](https://github.com/ll7/scenario_runner/blob/master/Docs/img/Images%20for%20execution%20results/IMG_20200628_184208.jpg)
+![](img/Images%20for%20execution%20results/IMG_20200628_184208.jpg)
 
 ### Pedestrian Crossing
 This Scenario was not possible to execute.

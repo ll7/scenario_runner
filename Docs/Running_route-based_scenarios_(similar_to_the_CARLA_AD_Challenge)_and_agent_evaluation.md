@@ -3,7 +3,7 @@ This documentation describes how you can run a route based scenario (similar to 
 
 
 
-## 1.) Running route-based scenarios (similar to the CARLA AD Challenge)
+## I.) Running route-based scenarios (similar to the CARLA AD Challenge)
 To run a route-based scenario you have to run the ScenarioRunner as follows:
 
 ```
@@ -25,7 +25,7 @@ python manual_control.py
 ```
 
 
-## 2.) Setting up your agent for evaluation
+## II.) Setting up your agent for evaluation
 
 To have your agent evaluated by the challenge evaluation system you must define an Agent class that inherits the AutonomousAgent base class. In addition, you need to setup your environment as described in the Challenge evaluator tutorial.
 
@@ -78,3 +78,6 @@ The initial route: On the beginning of the execution, the entire route that the 
 ```
 
 It is represented as a list of tuples, containing the route waypoints, expressed in latitude and longitude and the current road option recommended. For an intersection, the option can be go straight, turn left or turn right. For the rest of the route the recommended option is lane follow.
+
+## III.) Next references
+The a-part from the additional work describes Basics of Bash Scripts, shows further useful topics and how you can run multiple terminals from one terminal automated: [a. Basics_of_bash_script_automation](Basics_of_bash_script_automation.md).
