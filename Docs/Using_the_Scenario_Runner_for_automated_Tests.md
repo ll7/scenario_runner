@@ -19,14 +19,14 @@ The documentation [Getting started](Docs/getting_scenariorunner.md) from the ori
 #### Additional Work
 
 &nbsp;&nbsp;&nbsp;a. [Basics_of_bash_script_automation](Basics_of_bash_script_automation.md)\
-&nbsp;&nbsp;&nbsp;b. [Steering_Wheel](Steering_Wheel.md)
+&nbsp;&nbsp;&nbsp;b. [Steering_Wheel](Steering_Wheel.md)\
+&nbsp;&nbsp;&nbsp;c. [Docker Image](run_scenario_runner_from_docker.md)
 
 
 #### Outlook
 
-&nbsp;&nbsp;&nbsp;I. [OpenScenario](openscenario.md)\
-&nbsp;&nbsp;&nbsp;II. [ROS](Steering_Wheel.md)\
-&nbsp;&nbsp;&nbsp;III. [Docker Image](Steering_Wheel.md)
+&nbsp;&nbsp;&nbsp;I.  [OpenScenario](openscenario.md)\
+&nbsp;&nbsp;&nbsp;II. [ROS](ros.md)
 
 ## Overview
 The "Overview" part gives an overview of the main topics of the project module. The overall goal of the module was to be able to use the Scenario Runner at the end to run scenarios automatically.
