@@ -18,11 +18,18 @@ The documentation [Getting started](Docs/getting_scenariorunner.md) from the ori
 
 #### Additional Work
 
-a. [Basics_of_bash_script_automation](Basics_of_bash_script_automation.md)
+&nbsp;&nbsp;&nbsp;a. [Basics_of_bash_script_automation](Basics_of_bash_script_automation.md)\
+&nbsp;&nbsp;&nbsp;b. [Steering_Wheel](Steering_Wheel.md)
 
-b. [Steering_Wheel](Steering_Wheel.md)
+
+#### Outlook
+
+&nbsp;&nbsp;&nbsp;I. [OpenScenario](openscenario.md)\
+&nbsp;&nbsp;&nbsp;II. [ROS](Steering_Wheel.md)\
+&nbsp;&nbsp;&nbsp;III. [Docker Image](Steering_Wheel.md)
 
 ## Overview
+The "Overview" part gives an overview of the main topics of the project module. The overall goal of the module was to be able to use the Scenario Runner at the end to run scenarios automatically.
 
 ### [1. Excecute_the_supported scenarios](Execute_the_supported_scenarios.md)
 The first Part describes the Instructions how to execute the supported Scenarios. Therein is shown how you have to prepare and a differentiation for the Scenarios from OpenScenario.
@@ -45,10 +52,23 @@ The sixth part describes how I can run a test case automatically by running mult
 ### [7. Running_route-based_scenarios_(similar_to_the_CARLA_AD_Challenge)_and agent_evaluation](Running_route-based_scenarios_(similar_to_the_CARLA_AD_Challenge)_and_agent_evaluation.md)
 The seventh part describes how you can run a route based scenario and set up an agent for evaluation.
 
-#### Additional Work
+## Additional Work
+The "Additional Work" part contains documentation that was not necessary for the actual project module and goes beyond the original project objective, but nevertheless provides useful pointers for further work.
 
 ### [a. Basics_of_bash_script_automation](Basics_of_bash_script_automation.md)
 The a-part describes Basics of Bash Scripts, shows further useful topics and how you can run multiple terminals from one terminal automated.
 
 ### [b. Steering_Wheel](Steering_Wheel.md)
 The b-part describes how you can connect a Steering Wheel with the Carla Scenario Runner.
+
+### [c. Docker Image](run_scenario_runner_from_docker.md)
+The c-part describes how you can run the scenario run from a docker image.
+
+## Outlook
+The "Outlook" part includes "failed" work packages which were not examined in detail, as their results could not significantly advance the project objective. Nevertheless, they are included here for the sake of completeness.
+
+### [I. OpenScenario](Basics_of_bash_script_automation.md)
+This part describes what OpenScenario is and why the format was not investigated further in the project module.
+
+### [II. ROS](ros.md)
+This part gives an Outlook how you can use ROS with the Scenario Runner.

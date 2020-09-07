@@ -6,6 +6,10 @@ The first option is how you can run multiple scenarios of one class successively
 
 The second and third option is to run a fully- or an semi-automated scenario including recording and evaluation.
 
+In addition the semi-automated approach is extended to run a list of scenarios automated.
+
+Finally, the penultimate section briefly explains why a semi-automated approach is preferred over an automated approach.
+
 ## I.)  Running all scenarios of one scenario class
 It is possible to execute a sequence of scenarios, that belong to the same class, e.g. the "FollowLeadingVehicle" class.
 
@@ -97,15 +101,37 @@ else
 fi
 ```
 
-##IV.) Running the ScenarioRunner automated
+##IV.) Running a list of multiple Scenarios with the semi-automated approach
+In addition to the previous semi-automated approach, we are extending it to be able to run a list of scenarios semi-automatically.
 
-TODO: DOC ÜBERARBEITEN!!! -> bash automated_scenario_runner.sh
+First the Carla server must be started again separately.
+
+Then you just have to execute the bash script:
+
+```
+bash automated_scenario_runner.sh <param>
+```
+The parameter placeholder "param" can be replaced with a parameter (e.g. a number) in command line to assign the execution to a certain person.
+
+This bash script in turn executes the bash script "scenario_runner.sh" introduced in section III.)
+
+The difference is that it holds a list "listScenarios" in which the desired scenarios are declared.
+
+In Addition the script executes the "scneario_runner.sh" with four parameters instead of two.
+
+1. The first is the scenario_name from the list "listScenarios"
+2. The second is per default "true" and determines if the scenario will be recorded or not
+3. The third is a count variable for the scenarios if you want to the test the same scenario 2 times in the same execution
+4. The fourth is an additional argument from command line to count the person and identify which scenario was executed by whom.
+
 
 ```
 #!/bin/bash
-#scenario := Count Variable for the scenarios
-#person := arument from command line to count the person
 #listScenarios := list of test scenarios
+#scenario_name := a scenario from the list "listScenarios"
+#scenario := Count Variable for the scenarios if you want to the test the same scenario 2 times in the same execution
+#person := an additional argument from command line to count the person and identify which scenario was executed by whom.
+
 
 scenario=1
 person=$1
@@ -137,7 +163,7 @@ done
 
 
 ## V.) Pros and Cons of fully- and semi-automated Test Scenario
-This section explains why we use a semi-automated test scenario once in paragraph II.) and a fully-automated test scenario once in paragraph III.)
+This section explains why we use a semi-automated test scenario once in paragraph III.)/ IV.) and a fully-automated test scenario once in paragraph II.)
 
 The main reason is that with the fully-automated Test Scenario we receive the following memory error message after about 3 executions and and then restart the computer:
 
@@ -153,7 +179,7 @@ Engine crash handling finished; re-raising signal 11 for the default handler. Go
 
 On the other hand, the big advantage of the fully-automated version is that only one command has to be executed for a full test scenario.
 
-Besides this big advantage we found it more exciting to work with a semi-automated script and to make the whole thing modular and yet easy to handle. Therefore we recommend to use the semi-automated script for the Scenario Runner. 
+Besides this big advantage we found it more exciting to work with a semi-automated script and to make the whole thing modular and yet easy to handle. Therefore we recommend to use the semi-automated script for the Scenario Runner, especially the approach to run a list of scenarios semi-automated as described in pararaph IV).
 
 
 ## VI.) Next references
