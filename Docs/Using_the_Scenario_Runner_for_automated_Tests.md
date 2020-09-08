@@ -19,14 +19,14 @@ The documentation [Getting started](Docs/getting_scenariorunner.md) from the ori
 #### Additional Work
 
 &nbsp;&nbsp;&nbsp;a. [Basics_of_bash_script_automation](Basics_of_bash_script_automation.md)\
-&nbsp;&nbsp;&nbsp;b. [Steering_Wheel](Steering_Wheel.md)\
-&nbsp;&nbsp;&nbsp;c. [Docker Image](run_scenario_runner_from_docker.md)
+&nbsp;&nbsp;&nbsp;b. [Steering_Wheel](Steering_Wheel.md)
 
 
 #### Outlook
 
-&nbsp;&nbsp;&nbsp;I.  [OpenScenario](openscenario.md)\
-&nbsp;&nbsp;&nbsp;II. [ROS](ros.md)
+&nbsp;&nbsp;&nbsp;I.   [OpenScenario](openscenario.md)\
+&nbsp;&nbsp;&nbsp;II.  [ROS](ros.md)\
+&nbsp;&nbsp;&nbsp;III. [Docker Image](run_scenario_runner_from_docker.md)
 
 ## Overview
 The "Overview" part gives an overview of the main topics of the project module. The overall goal of the module was to be able to use the Scenario Runner at the end to run scenarios automatically.
@@ -72,3 +72,6 @@ This part describes what OpenScenario is and why the format was not investigated
 
 ### [II. ROS](ros.md)
 This part gives an Outlook how you can use ROS with the Scenario Runner.
+
+### [III. Running CARLA container (run_scenario_runner_from_docker.md)
+This part describes what docker is, how you can install it and pull the CARLA image 0.9.9. Unfortunately, we got an error by executing the docker image which we couldn't solve. That's why till now it is just an Outlook for further work.
