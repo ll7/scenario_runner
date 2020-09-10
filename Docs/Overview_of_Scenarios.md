@@ -1,16 +1,17 @@
-# Execution results of the supported scenarios
+# Overview of scenarios
 
-You can find the detailed description of how to execute the supported scenarios here:
-[Instruction to execute the Supported scenarios](Execute_the_supported_scenarios.md).
+This documentation gives a detailed overview about the supported scenarios.
 
-## I.) Overview about the supported scenarios
+You can find a less detailed description of the supported scenario in the CARLA documentation [here](list_of_scenarios.md).
+
+## 1.) Overview about the supported scenarios
 
 You can list all supported scenarios (also for Open Scenario) in the terminal:
 ```
 python scenario_runner.py --list
 ```
 
-## II.) Execution result of the supported scenarios
+## 2.) Execution result of the supported scenarios
 You can replace the "[placeholder]" with any other scenario, e.g. "ManeuverOppositeDirection_1".
 ```
 python scenario_runner.py --scenario [placeholder] --reloadWorld
@@ -545,7 +546,7 @@ VehicleTurnLeftAtJunction_5
 VehicleTurnLeftAtJunction_6
 ```
 
-## III.) Execution result of the supported scenarios for Open Scenario
+## 3.) Execution result of the supported scenarios for Open Scenario
 You can replace the "[placeholder]" with any other scenario, e.g. "LaneChaneSimple".
 ```
 python scenario_runner.py --openscenario srunner/examples/[placeholder].xosc
@@ -582,6 +583,5 @@ This Scenario is not working correctly. After a traffic light the car has is dri
 CyclistCrossing
 ```
 
-## IV.) Next references
-You can find "how to write your own scenarios" here: 
-[3. Writing_your_own_scenario](Writing_your_own_scenario.md).
+## 4.) Next references
+You can find how to create a scenario [here](Create_Scenarios.md).

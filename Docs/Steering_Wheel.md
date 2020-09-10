@@ -4,7 +4,7 @@ This tutorial describes how you can connect a Steering Wheel with the Carla Scen
 
 It explains the LTWheelConf tool, shows the most important changes and describes how to adjust the sensitivity of the steering wheel.
 
-## I.) Get the LTWheelConf Tool for support
+## 1.) Get the LTWheelConf Tool for support
 
 The following sources were used for the paragraphs I.) and II.): https://steamcommunity.com/sharedfiles/filedetails/?l=german&id=142372419
 
@@ -40,7 +40,7 @@ Finally install it with the following command:
 sudo cp ltwheelconf /usr/local/bin/
 ```
 
-## II.) Use LTWHeelConf to identify your steering wheel
+## 2.) Use LTWHeelConf to identify your steering wheel
 
 In this paragraph we want to know whether our steering wheel is recognised and what the name or the shortname of our steering wheel is to use it later in the dual controller class.
 
@@ -58,7 +58,7 @@ These are a selection of supported wheel shortname values you can get with the L
     'G25' (G25)
     'G27' (G27)
 
-## III.) Copy the DualControl Class in your manual_control.py 
+## 3.) Copy the DualControl Class in your manual_control.py 
 
 Fortunately Carla already provides a class DualControl() under the following path, which we can reuse slightly modified for our manual control script of Scenario Runner.
 
@@ -255,7 +255,7 @@ class DualControl(object):
 
 ```
 
-## IV.) Configure the sensitivity of your Steering_Wheel
+## 4.) Configure the sensitivity of your Steering_Wheel
 
 You can modify the function _parse_vehicle_wheel() in the class mentioned above to change the sensitivity of your wheel configurations.
 
@@ -303,7 +303,7 @@ Further possible modifications could be done for the throttle and brake sensitiv
         self._control.hand_brake = bool(jsButtons[self._handbrake_idx])
 ```
 
-## V.) Execute the CARLA Scenario Runner with your Steering Wheel
+## 5.) Execute the CARLA Scenario Runner with your Steering Wheel
 
 Finally, you can execute (from the scenario runner directory) the Scenario Runner with your individually configured steering wheel:
 

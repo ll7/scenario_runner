@@ -80,4 +80,4 @@ The initial route: On the beginning of the execution, the entire route that the 
 It is represented as a list of tuples, containing the route waypoints, expressed in latitude and longitude and the current road option recommended. For an intersection, the option can be go straight, turn left or turn right. For the rest of the route the recommended option is lane follow.
 
 ## III.) Next references
-The a-part from the additional work describes Basics of Bash Scripts, shows further useful topics and how you can run multiple terminals from one terminal automated: [a. Basics_of_bash_script_automation](Basics_of_bash_script_automation.md).
+The a-part from the additional work describes Basics of Bash Scripts, shows further useful topics and how you can run multiple terminals from one terminal automated: [a. Basics_of_bash_script_automation](Basics_of_bash_automation.md).

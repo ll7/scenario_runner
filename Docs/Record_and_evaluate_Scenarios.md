@@ -1,10 +1,10 @@
-# Record your test case and evaluate it
+# Record and evaluate scenarios
 
-The following describes how a Test Scenario is recorded, where it is stored and how it can be evaluated by replaying it or reading information from it.
+The following describes how you can record a scenario, where it is stored and how it can be evaluated by replaying it or reading information from it. Finally, it shows a further method to display the output of the test criteria.
 
-## I.) Storage Location
+## 1.) Storage Location
 
-CARLA includes now a recording and replaying API, that allows to record a simulation in a file and later replay that simulation. The file is written on the server side only, and it includes which actors are created or destroyed in the simulation, the state of the traffic lights and the position and orientation of all vehicles and pedestrians.
+CARLA includes a recording and replaying API, that allows to record a simulation in a file and later replay that simulation. The file is written on the server side only, and it includes which actors are created or destroyed in the simulation, the state of the traffic lights and the position and orientation of all vehicles and pedestrians. For more information have a look [here](https://carla.readthedocs.io/en/0.9.6/recorder_and_playback/).
 
 
 ### Storage Location of the recorded Scenarios
@@ -20,10 +20,10 @@ The following path contains 5 sample scripts for recording and evaluating a scen
 ```
 
 
-## II.) Recording
-Before you execute the next command to record a scenario you have to execute the known commands as described in [1. Execute_the_supported_scenarios](Execute_the_supported_scenarios.md): 
+## 2.) Recording
+Before you execute the next command to record a scenario you have to execute the known commands as described [here](Execute_Scenarios.md): 
 
-(1) start the Carla Server, (2) execute a scenario and (3) execute manual_control.py.
+_in brief_: (1) start the Carla Server, (2) execute a scenario and (3) execute manual_control.py.
 
 Then you can enter the following command in the above mentioned directory (~/CARLA_0.9.9/PythonAPI/examples) while starting a scenario:
 ```
@@ -45,7 +45,7 @@ For example recording a Scenario "test1.log" without additional spawned vehicles
 python start_recording.py -f "test1.log" -n "0"
 ```
 
-## III.) Evaluating through sample scripts
+## 3.) Evaluating through sample scripts
 With the following 4 sample scripts you can replay a recorded scenario, retrieve its information, the collisions and the blocked actors.
 
 ### Replaying
@@ -188,62 +188,31 @@ Duration: 17.5917 seconds
 ```
 There we can see when an actor was stopped for at least the minimum time specified.
 
-## IV.) Evaluating through modifying the test criterion
-As described in [4. Modify_an_existing_scenario](Modify_an_existing_scenario.md) you can modify within class of a scenario its evaluation criterion.
-
-In the following there are five instructions listed how you can make use of modifying the criterion to evaluate your scenarios.
-
-Per default there is the criterion "CollisionTest" in the scenario class "FollowLeadingVehicle" implemented. For a better understanding we compare this during the instructions with the new added criterion "DrivenDistanceTest".
-
-### Example: Add the criterion "DrivenDistanceTest"
-
-#### 1 Select the criterion and the desired scenario
-First you have to look which criterion you want to add to your desired scenario. In this example we choose the scenario "FollowLeadingVehicle" with the criterion "DrivenDistanceTest", which checks if the actor's driven distance is more than a defined value (in meters).
-
-#### 2 Add the imports in your selected scenario
-Second you have to import to your selected scenario (e.g. FollowLeadingVehicle) the criterion "DrivenDistanceTest".
+## 4.) Evaluate the output of the executed Scenario
+To evaluate the test criteria of a scenario as described [here](Create_Scenarios.md) and [there](Modify_Scenarios.md). You can use the parameter "--output" by executing your scenario to get an evaluation output on terminal.
 ```
-from srunner.scenariomanager.scenarioatomics.atomic_criteria import CollisionTest
-from srunner.scenariomanager.scenarioatomics.atomic_criteria import DrivenDistanceTest
+python scenario_runner.py --scenario FollowLeadingVehicle_1 --reloadWorld --output
 ```
-
-#### 3 Modify the _create_test_criteria() function
-Third you have to modify the following criteria function in the selected scenario class.
-
-In this example we added the lines 8 and 9 analogous to the lines 5 and 6 with the small difference that the DrivenDistanceTest() class in line 8 require an additional argument.
-
-For the information which arguments you have to add to your choosen criterion just have a look in the _atomic_scenario_criteria.py_ script. 
-
+There you can see an example for an output of an scenario which failed ("Result: FAILURE") because we manually created a collision with the other vehicle.
 ```
-1 def _create_test_criteria(self):
-2
-3    criteria = []
-4
-5    collision_criterion = CollisionTest(self.ego_vehicles[0])
-6    criteria.append(collision_criterion)
-7
-8    distance_criterion = DrivenDistanceTest(self.ego_vehicles[0],1)
-9    criteria.append(distance_criterion)
-10
-11   return criteria
+Scenario: FollowVehicle --- Result: FAILURE
+Start time: 2020-05-28 14:35:17
+End time: 2020-05-28 14:36:17
+Duration: System Time 60.08s --- Game Time 60.02s
+Ego vehicle:  Actor(id=300, type=vehicle.lincoln.mkz2017)
+Other actors: Actor(id=301, type=vehicle.nissan.patrol); 
+
+
+                Actor             |            Criterion           |   Result    | Actual Value | Expected Value 
+-----------------------------------------------------------------------------------------------------------------
+         lincoln.mkz2017 (id=300) |         CheckCollisions (Req.) |     FAILURE |         1.00 |         0.00 
+                                  |                       Duration |     FAILURE |        60.02 |        60.00 
 ```
 
-#### 4 Execute the modifyied scenario
-Now you can start the scenario as described in [2. Execute_the_supported_scenarios](Execute_the_supported_scenarios.md) with the little difference that you have to add the parameter "-- output".
-```
-python scenario_runner.py --scenario FollowLeadingVehicle_1 --output --reloadWorld
-```
-After that you can start the manual_control.py and exceute the scenario.
-```
-python manual_control.py
-```
-
-#### 5 Evaluation displayed on command line
-Now you can see the evaluation criterion on command line.
+In Addition, here you can see the output result of a scenario evaluated for the two criterions "CollisionTest" and "CheckDrivenDistance".
 
 ![](img/Images%20for%20execution%20results/outpus.jpg)
 
 
-## V.) Next references
-You can find "how you can run a test case automatically by running multiple scenarios in a test and evaluating them against certain metrics".
-[6. Execute_an_automated_test_case](Execute_an_automated_test_case.md)
+## 5.) Next references
+The next section shows how you can run [(semi-)automated tests](Semi_automated_tests.md) in different ways:

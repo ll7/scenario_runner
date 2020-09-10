@@ -23,7 +23,7 @@ from srunner.scenariomanager.scenarioatomics.atomic_behaviors import (ActorTrans
                                                                       ActorDestroy,
                                                                       StopVehicle,
                                                                       SyncArrival,
-                                                                      WaypointFollower)
+                                                                      WaypointFollower, TrafficLightManipulator)
 from srunner.scenariomanager.scenarioatomics.atomic_criteria import CollisionTest
 from srunner.scenariomanager.scenarioatomics.atomic_trigger_conditions import DriveDistance, InTriggerDistanceToLocation
 from srunner.scenarios.basic_scenario import BasicScenario
@@ -129,6 +129,11 @@ class SignalizedJunctionRightTurn(BasicScenario):
             policy=py_trees.common.ParallelPolicy.SUCCESS_ON_ONE)
         move_actor_parallel.add_child(move_actor)
         move_actor_parallel.add_child(waypoint_follower_end)
+
+        #manipulate traffic light
+        manipulate_traffic_light = TrafficLightManipulator(self.ego_vehicles[0], "S7right")
+        move_actor_parallel.add_child(manipulate_traffic_light)
+
         # stop other actor
         stop = StopVehicle(self.other_actors[0], self._brake_value)
         # end condition

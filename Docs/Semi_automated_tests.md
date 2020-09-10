@@ -1,6 +1,6 @@
-# Execute an automated test case
+# (Semi-)automated tests
 
-This documentation describes three options of running your scenario runner automated.
+This documentation describes three options of running your scenario runner (semi-)automated.
 
 The first option is how you can run multiple scenarios of one class successively automated. 
 
@@ -8,9 +8,11 @@ The second and third option is to run a fully- or an semi-automated scenario inc
 
 In addition the semi-automated approach is extended to run a list of scenarios automated.
 
-Finally, the penultimate section briefly explains why a semi-automated approach is preferred over an automated approach.
+The section explains why a semi-automated approach is preferred over an automated approach.
 
-## I.)  Running all scenarios of one scenario class
+Finally, there is explained how you can run an automated route based scenario.
+
+## 1.)  Running all scenarios of one scenario class
 It is possible to execute a sequence of scenarios, that belong to the same class, e.g. the "FollowLeadingVehicle" class.
 
 ```
@@ -28,7 +30,7 @@ Then the scenarios of the selected class (e.g. FollowLeadingVehicle) are execute
 python manual_control.py
 ```
 
-## II.) Running an fully-automated Test Scenario including recording and evaluation
+## 2.) Running an fully-automated Test Scenario including recording and evaluation
 To run a fully-automated Test scenario we provide a bash script that executes 
 - (1) the Carla Server, 
 - (2) the Scenario Runner,
@@ -63,7 +65,7 @@ python /home/carlaws19/CARLA_0.9.9/PythonAPI/examples/start_recording.py -f "Fol
 ```
 
 
-## III.) Running an semi-automated Test Scenario including recording and evaluation
+## 3.) Running an semi-automated Test Scenario including recording and evaluation
 We call this third option semi-automated, because you have to start the carla Server (as known) separately.
 
 So After starting the Carla Server navigate to the following path:
@@ -101,7 +103,7 @@ else
 fi
 ```
 
-##IV.) Running a list of multiple Scenarios with the semi-automated approach
+##4.) Running a list of multiple Scenarios with the semi-automated approach
 In addition to the previous semi-automated approach, we are extending it to be able to run a list of scenarios semi-automatically.
 
 First the Carla server must be started again separately.
@@ -162,7 +164,7 @@ done
 
 
 
-## V.) Pros and Cons of fully- and semi-automated Test Scenario
+## 5.) Pros and Cons of fully- and semi-automated Test Scenario
 This section explains why we use a semi-automated test scenario once in paragraph III.)/ IV.) and a fully-automated test scenario once in paragraph II.)
 
 The main reason is that with the fully-automated Test Scenario we receive the following memory error message after about 3 executions and and then restart the computer:
@@ -182,6 +184,23 @@ On the other hand, the big advantage of the fully-automated version is that only
 Besides this big advantage we found it more exciting to work with a semi-automated script and to make the whole thing modular and yet easy to handle. Therefore we recommend to use the semi-automated script for the Scenario Runner, especially the approach to run a list of scenarios semi-automated as described in pararaph IV).
 
 
-## VI.) Next references
-You can find "how to run a route based scenario (similar to CARLA AD Challenge) and set up an agent for evaluation".
-[7. Running_route-based_scenarios_(similar_to_the_CARLA_AD_Challenge)_and_agent_evaluation](Running_route-based_scenarios_(similar_to_the_CARLA_AD_Challenge)_and_agent_evaluation.md)
+## 6.) Running an automated route-based scenarios (similar to the CARLA AD Challenge)
+To run a route-based scenario you have to run the ScenarioRunner as follows:
+
+```
+python scenario_runner.py --route <path/to/route-file> <path/to/scenario_sample_file> [route id] --agent <path/to/agent_file>
+```
+
+Example:
+```
+python scenario_runner.py --route /home/carlaws19/scenario_runner/srunner/data/routes_debug.xml /home/carlaws19/scenario_runner/srunner/data/all_towns_traffic_scenarios1_3_4.json 0 --agent /home/carlaws19/scenario_runner/srunner/autoagents/npc_agent.py
+```
+
+If no route id is provided, all routes within the given file will be executed.
+
+By doing so, ScenarioRunner will match the scenarios to the route, and they'll activate when the ego vehicle is nearby. However, routes need an autonomous agent to control the ego vehicle. Several examples are provided in "srunner/autoagents/".
+
+With the python manual_control.py script, you are able to run the route-based scenario with an ego vehicle.:
+```
+python manual_control.py
+```

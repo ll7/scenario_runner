@@ -67,6 +67,9 @@ class SignalizedJunctionLeftTurn(BasicScenario):
             raise RuntimeError("No traffic light for the given location found")
         self._traffic_light.set_state(carla.TrafficLightState.Green)
         self._traffic_light.set_green_time(self.timeout)
+        #set the traffic light in front of the ego vehicle on red light
+        #self._traffic_light.set_state(carla.TrafficLightState.Red)
+        #self._traffic_light.set_red_time(self.timeout)
         # other vehicle's traffic light
         traffic_light_other.set_state(carla.TrafficLightState.Green)
         traffic_light_other.set_green_time(self.timeout)

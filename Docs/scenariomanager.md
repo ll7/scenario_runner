@@ -64,7 +64,7 @@ This module provides all atomic scenario behaviors required to realize complex, 
 
 
 #### atomic_criteria.py
-This module provides all the possible criteria for evaluation use cases as described in [1.) Modify the class of a scenario](Modify_an_existing_scenario.md).
+This module provides all the possible criteria for evaluation use cases as described in [1.) Modify the class of a scenario](Modify_Scenarios.md).
 
 #### atomic_trigger_conditions
 This module provides all atomic scenario behaviors that reflect
@@ -82,8 +82,24 @@ timeout behavior using the CARLA game time
 
 ## 3.) An example to modify a traffic light scenario (SignalizedJunctionLeftTurn) with the Scenario Manager
 
-- To DO
-- Ampel auf grün setzen/ andere Zeit setzen
+Variante B: Szenario in der game loop vom Szenario_Manual Control zu bearbeiten
+#traffic_light = CarlaDataProvider.get_next_traffic_light(SignalizedJunctionLeftTurn.ego_vehicles[0], False)
+            print(args)
 
+            # Selecting straight path at intersection
+            #target_waypoint = generate_target_waypoint(
+                #CarlaDataProvider.get_map().get_waypoint(SignalizedJunctionLeftTurn.other_actors[0].get_location()), 0)
+            # Generating waypoint list till next intersection
+
+           # wp_choice = target_waypoint.next(1.0)
+
+            #while not wp_choice[0].is_intersection:
+                #target_waypoint = wp_choice[0]
+                #plan.append((target_waypoint, RoadOption.LANEFOLLOW))
+                #wp_choice = target_waypoint.next(1.0)
+
+
+            #self._traffic_light.set_state(carla.TrafficLightState.Red)
+            #sself._traffic_light.set_red_time(self.timeout)
 
 

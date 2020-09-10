@@ -4,7 +4,7 @@ Bash scripts are suitable for combining programs according to your needs and the
 This documentation describes first the very fundamental Basics of Bash Scripts. Second it shows where you can find further useful topics and third how you can run multiple terminals from one terminal automated.
 
 
-## I.) Basics of Bash Scripts
+## 1.) Basics of Bash Scripts
 
 Bash Scripts have the file format:
 ```
@@ -27,17 +27,15 @@ Then you can run the bash script from command line (if you are in the right dire
 $ bash MyScript.sh
 ```
 
-## II.) Further useful topics
+## 2.) Further useful topics
 
-More useful topics with examples to work with a bash script can be found under the following link. 
+More useful topics with examples to work with a bash script can be found under the following [link](https://linuxhint.com/30_bash_script_examples/). 
 
 These include topics such as loops, if/else statements, retrieving command line arguments, functions, etc. 
 
-- https://linuxhint.com/30_bash_script_examples/
+## 3.) Run multiple Terminals from one bash script
 
-## III.) Run multiple Terminals from one bash script
-
-For the Carla Use Case it was a consideration to call several separate command lines from a bash script to execute the respective scripts (Carla Server, Scenario, Manual Control, Record, etc.) Due to a memory overflow (more about this in chapter [6. Execute_an_automated_test_case.md](Execute_an_automated_test_case.md)) this idea was abandoned. However, the command for this is the following:
+For the Carla Use Case it was a consideration to call several separate command lines from a bash script to execute the respective scripts (Carla Server, Scenario, Manual Control, Record, etc.) Due to a memory overflow (more about this in [chapter](Semi_automated_tests.md)) this idea was abandoned. However, the command for this is the following:
 ```
 #gnome-terminal -e <command>
 ```
@@ -45,7 +43,3 @@ Replace the <command> with the following path:
 ```
 /home/carlaws19/CARLA_0.9.9/CarlaUE4.sh
 ```
-
-## IV.) Next references
-You can find how you can connect a Steering Wheel with the Carla Scenario Runner here:
-[b. Steering_Wheel](Steering_Wheel.md).
