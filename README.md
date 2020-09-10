@@ -63,4 +63,4 @@ ScenarioRunner specific code is distributed under MIT License.
 Using the ScenarioRunner for (semi-)automated tests
 -------
 In context of a student project module from the University of Augsburg they investigated the scenario runner. The aim of the project module was to execute, investigate and use for test purposes the ScenarioRunner provided by CARLA. You can find the detailed documentation 
-[here](https://github.com/ll7/scenario_runner/blob/master/Docs/Using_the_Scenario_Runner_for_semi_automated_testing.md).
+[here](Docs/Using_the_Scenario_Runner_for_semi_automated_testing.md).
