@@ -1,6 +1,6 @@
 # Overview of scenarios
 
-This documentation gives a detailed overview about the supported scenarios.
+This documentation gives a detailed overview about the supported scenarios written in python and OpenScenario.
 
 You can find a less detailed description of the supported scenario in the CARLA documentation [here](list_of_scenarios.md).
 
@@ -128,7 +128,7 @@ SignalizedJunctionLeftTurn_6
 ```
 
 #### Executing SignalizedJunctionLeftTurn_1
-The ego vehicle is approaching a singalized Junction and turns right.
+The ego vehicle is approaching a singalized junction and turns right.
 
 ![](img/Images%20for%20execution%20results/IMG_20200605_184547.jpg)
 
@@ -144,16 +144,16 @@ ERROR: failed to destroy actor 207 : unable to destroy actor: not found
 
 
 #### Executing SignalizedJunctionLeftTurn_5
-The ego vehicle is approaching a singalized Junction and turns left in a collision with another vehicle.
+The ego vehicle is approaching a singalized junction and turns left in a collision with another vehicle.
 ![](img/Images%20for%20execution%20results/IMG_20200605_185240.jpg)
 
 #### Executing SignalizedJunctionLeftTurn_6
-The ego vehicle is approaching a singalized Junction and drives straight ahead.
+The ego vehicle is approaching a singalized junction and drives straight ahead.
 ![](img/Images%20for%20execution%20results/IMG_20200605_185958.jpg)
 
 ### Signalized Junction Right Turn
 In this scenario right turn of hero actor without collision at signalized intersection
-is tested. Hero Vehicle is turning right in an urban area, at a signalized intersection and
+is tested. Hero vehicle is turning right in an urban area, at a signalized intersection and
 turns into the same direction of another vehicle crossing straight initially from
 a lateral direction. The 7 possible scenarios are:
 ```
@@ -167,32 +167,32 @@ SignalizedJunctionRightTurn_7
 ```
 
 #### Executing SignalizedJunctionRightTurn_1
-The ego vehicle is approaching a singalized Junction and turns left after the green light appeared.
+The ego vehicle is approaching a singalized junction and turns left after the green light appeared.
 
 ![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
 #### Executing SignalizedJunctionRightTurn_2
-The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
+The ego vehicle drives to a signalized junction and stops till another vehicle crosses the Junction.
 
 ![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
 #### Executing SignalizedJunctionRightTurn_3
-The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
+The ego vehicle drives to a signalized junction and stops till another vehicle crosses the Junction.
 
 ![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
 #### Executing SignalizedJunctionRightTurn_4 and SignalizedJunctionRightTurn_5
-The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
+The ego vehicle drives to a signalized junction and stops till another vehicle crosses the Junction.
 
 ![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
 #### Executing SignalizedJunctionRightTurn_6
-The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
+The ego vehicle drives to a signalized junction and stops till another vehicle crosses the Junction.
 
 ![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
 #### Executing SignalizedJunctionRightTurn_7
-The ego vehicle drives to a signalized Junction and stops till another vehicle crosses the Junction.
+The ego vehicle drives to a signalized junction and stops till another vehicle crosses the Junction.
 
 ![](img/Images%20for%20execution%20results/IMG_20200605_190200.jpg)
 
@@ -213,25 +213,25 @@ VehicleTurningRight_8
 ```
 
 #### Executing VehicleTurningRight_1
-The ego vehicle drives to a signalized Junction and stops till the green light turns on. Then the vehicle turns left.
+The ego vehicle drives to a signalized junction and stops till the green light turns on. Then the vehicle turns left.
 
 ![](img/Images%20for%20execution%20results/IMG_20200605_190654.jpg)
 
 #### Executing VehicleTurningRight_2
-The ego vehicle drives to a signalized Junction and stops till the green light turns on. Then the vehicle turns left.
+The ego vehicle drives to a signalized junction and stops till the green light turns on. Then the vehicle turns left.
 
 ![](img/Images%20for%20execution%20results/IMG_20200605_190654.jpg)
 
 #### Executing VehicleTurningRight_3
-The ego vehicle drives to a signalized Junction and stops till the green light turns on. Then the vehicle turns right.
+The ego vehicle drives to a signalized junction and stops till the green light turns on. Then the vehicle turns right.
 
 ![](img/Images%20for%20execution%20results/IMG_20200605_191207.jpg)
 
 #### Executing VehicleTurningRight_4 and VehicleTurningRight_5 and VehicleTurningRight_6
-In this Szenario's the vehicle is only driving to the sinalized Junction and stops.
+In this scenario the vehicle is only driving to the sinalized junction and stops.
 
 #### Executing VehicleTurningRight_7
-The ego vehicle drives to a Junction and stops till a bycycle can drive over the street and then the vehicle turns right.
+The ego vehicle drives to a junction and stops till a bycycle can drive over the street and then the vehicle turns right.
 
 ![](img/Images%20for%20execution%20results/IMG_20200605_192512.jpg)
 
@@ -266,7 +266,7 @@ The ego vehicle takes a right turn from an intersection after the green signal t
 
 
 #### Executing VehicleTurningLeft_7 and Vehicle TurningLeft_8
-The ego vehicle drives to an intersection and stops. In Addition in the scenario VehicleTUrningLeft7 the vehicle stops as a cyclist (marked with a "X") crosses the road.
+The ego vehicle drives to an intersection and stops. In Addition in the scenario VehicleTurningLeft_7 the vehicle stops as a cyclist (marked with a "X") crosses the road.
 
 ![](img/Images%20for%20execution%20results/IMG_20200606_130214.jpg)
 
@@ -335,10 +335,10 @@ At some point the leading cars decelerate. The ego vehicle reacts by deceleartin
 ![](img/Images%20for%20execution%20results/IMG_20200608_173401.jpg)
 
 ### Executing OtherLeadingVehicle_3 and OtherLeadingVehicle_7
-Its in fact the same scenarios as in the both Scenarios above. The little difference now is that there is a two-lane instead of a three-lane given.
+Its in fact the same scenarios as in the both scenarios above. The little difference now is that there is a two-lane instead of a three-lane given.
 
 ### Executing OtherLeadingVehicle_4 and OtherLeadingVehicle_5 and OtherLeadingVehicle_6
-Same Scenarios as the mentioned scenario above. The difference here ist that there is a four-lane given.
+Same scenarios as the mentioned scenario above. The difference here ist that there is a four-lane given.
 
 ### Control Loss
 In this scenario control loss of a vehicle is tested due to bad road conditions, etc
@@ -432,7 +432,7 @@ This Scenario is not possible to execute.
 
 ### Dynamic Object Crossing
 This is similar to 'StationaryObjectCrossing', but with the difference that the
-Container is a running human, who suddenly drives into the way of the ego vehicle, which
+container is a running human, who suddenly drives into the way of the ego vehicle, which
 has to stop accordingly. After some time, the human will clear the road, such
 that the ego vehicle can continue driving. The 9 possible scenarios are:
 ```
@@ -448,12 +448,12 @@ DynamicObjectCrossing_9
 ```
 
 ### Executing DynamicObjectCrossing_1 and DynamicObjectCrossing_2 and DynamicObjectCrossing_3 and DynamicObjectCrossing_4 and DynamicObjectCrossing_7 and DynamicObjectCrossing_9
-In this Scenario a human is running into the way of the ego vehicle, which has to stop accordingly.
+In this scenario a human is running into the way of the ego vehicle, which has to stop accordingly.
 
 ![](img/Images%20for%20execution%20results/IMG_20200614_204035.jpg)
 
 ### Executing DynamicObjectCrossing_5 and DynamicObjectCrossing_6 and DynamicObjectCrossing_8
-This Scenarios are not working correctly. 
+This scenarios are not working correctly. 
 
 ### No Signal Junction Crossing
 This scenario tests negotiation between two vehicles crossing cross each other
@@ -468,7 +468,7 @@ NoSignalJunctionCrossing
 
 
 ### Change Lane
-This Scenario was not possible to execute.
+This scenario was not possible to execute.
 
 ```
 ChangeLane
@@ -482,7 +482,7 @@ list index out of range
 ```
 
 ### Challenge Basic
-This Scenario was not possible to execute.
+This scenario was not possible to execute.
 ```
 Challenge_Basic_00
 Challenge_Basic_01
@@ -496,7 +496,7 @@ Configuration for scenario Challenge_Basic cannot be found!
 ```
 
 ### Background Activity
-This Scenario was not possible to execute.
+This scenario was not possible to execute.
 ```
 BackgroundActivity_1
 ```
@@ -520,7 +520,7 @@ CutInFrom_left_Lane
 ```
 
 ### Free Ride Town
-This Scenario were not possible to execute.
+This scenario were not possible to execute.
 ```
 FreeRideTown01
 FreeRideTown02
@@ -529,14 +529,14 @@ FreeRideTown04
 ```
 
 ### MultiEgoTown
-This Scenarios were not possible to execute.
+This scenarios were not possible to execute.
 ```
 MultiEgoTown01
 MultiEgoTown03
 ```
 
 ### VehicleTurnLeftAtJunction
-This Scenarios were not possible to execute.
+This scenarios were not possible to execute.
 ```
 VehicleTurnLeftAtJunction_1
 VehicleTurnLeftAtJunction_2
@@ -546,7 +546,7 @@ VehicleTurnLeftAtJunction_5
 VehicleTurnLeftAtJunction_6
 ```
 
-## 3.) Execution result of the supported scenarios for Open Scenario
+## 3.) Execution result of the supported scenarios for OpenScenario
 You can replace the "[placeholder]" with any other scenario, e.g. "LaneChaneSimple".
 ```
 python scenario_runner.py --openscenario srunner/examples/[placeholder].xosc
@@ -560,7 +560,7 @@ LaneChangeSimple
 ![](img/Images%20for%20execution%20results/IMG_20200628_184208.jpg)
 
 ### Pedestrian Crossing
-This Scenario was not possible to execute.
+This scenario was not possible to execute.
 ```
 Pedestrian Crossing
 ```
@@ -571,14 +571,14 @@ Configuration for scenario Pedestrian cannot be found!
 ```
 
 ### Follow Leading Vehicle
-This scenario is the same procedure as the "Follow Leading Vehicle Scenario" described above.
+This scenario is the same procedure as the "Follow Leading Vehicle" scenario described above.
 ```
 FollowLeadingVehicle
 ```
 
 
 ### Cyclist Crossing
-This Scenario is not working correctly. After a traffic light the car has is driving right while a Cyclist is Crossing the street. However the car is crashing against this cyclist.
+This scenario is not working correctly. After a traffic light the car has is driving right while a cyclist is crossing the street. However the car is crashing against this cyclist.
 ```
 CyclistCrossing
 ```

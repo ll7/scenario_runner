@@ -3,13 +3,13 @@ This part follows on from the previous [part](Create_Scenarios.md), which descri
 
 The great difficulty in modifying a scenario is that a scenario is executed once by scenario_runner.py and is therefore already "precompiled". The behaviour of the scenario is therefore already defined by manual_control.py in the form of a py_tree data structure before the actual Ego Vehicle is executed, which is why dynamic reaction to traffic events is only possible to a limited extent. 
 
-In general it is possible to modify a scenario class according to the same scheme as it is created ([3. Create scenarios](Create_Scenarios.md)). Therefore we distinguish between the following three methods in the modification possibilities.
+In general it is possible to modify a scenario class according to the same scheme as it is [created](Create_Scenarios.md). Therefore we distinguish between the following three methods in the modification possibilities.
 1. Initalize(),
 2. CreateBehavior()
 3. and CreateTestCriteria()
 
 
-## 1.) Initialize Method
+## 1.) Initialize method
 This modification option is useful if you want to change the scenario initially,e.g. set the desired location of a vehicle, its speed, parameters for other actors and define a timeout. If you want to access traffic situations during the scenario, it is better to adjust the behaviour method in section 2) below.
 
 #### Example 1.1: setup parameters

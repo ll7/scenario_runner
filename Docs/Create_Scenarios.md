@@ -2,8 +2,8 @@
 
 This tutorial is based on the CARLA [documentation](https://github.com/carla-simulator/scenario_runner/blob/master/Docs/creating_new_scenario.md) but is extended by section 2.) patterns of frequently used parameters and objects for these classes. This answers the question "what" can be used to create a scenario. To prepare for the following section, "how" the scenarios can be modified. Finally, it describes how to add the scenario configuration.
 
-## 1.) Create a Scenario Class
-Go to the Scenarios folder and create a new Python class with the name
+## 1.) Create a scenario class
+Go to the scenarios folder and create a new python class with the name
 _NewScenario_ in a new Python file (_new_scenario.py_). The class should be
 derived from the _BasicScenario_ class.
 
@@ -28,7 +28,7 @@ This method should setup a list with all evaluation criteria for the scenario.
 The criteria should be based on the atomic criteria defined in
 _atomic_scenario_criteria.py_.
 
-As a result, the class should look as follows:
+### An exemplary implementation of an empty class with the three mentioned methods would look as follows:
 
    ```
    class NewScenario(BasicScenario):
@@ -121,9 +121,13 @@ self._other_actor_stop_in_front_intersection = 20
 ```
 
 ### 2.2) CreateBehavior method
-This method setup the behavior tree that contains the behavior of all vehicles during the scenario.
+This method setup the behavior tree that contains the behavior of all vehicles during the scenario. To define the behavior you can use functions of the two moduls:
+- _atomic_scenario_behavior.py_ and
+- _atomic_trigger_conditions.py_
 
-#### _atomic_scenario_behaviors.py_
+A selection of these functions is presented in the following.
+
+### _atomic_scenario_behaviors.py_
 This module provides all atomic scenario behaviors required to realize complex, realistic scenarios such as "follow a leading vehicle", "lane change", etc.
 
 In the following a selection of the classes from _atomic_scenario_behaviors.py_ are presented from which objects of behavior can be generated.
@@ -183,7 +187,7 @@ Atomic behavior that manipulates traffic lights around the ego_vehicle to trigge
 class TrafficLightManipulator()
 ```
 
-#### _atomic_trigger_conditions.py_
+### _atomic_trigger_conditions.py_
 This module provides all atomic scenario behaviors that reflect trigger conditions to either activate another behavior, or to stop another behavior.
 
 In the following a selection of the classes from _atomic_trigger_conditions.py_ are presented from which objects of behavior can be generated.

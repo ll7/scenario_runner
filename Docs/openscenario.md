@@ -16,4 +16,4 @@ OpenSCENARIO is an open file format for the description of dynamic contents in d
 
 ## 2.) Reasons why the format was not investigated further in the project module
 
-OpenScenario is only partially supported by ScenarioRunner. First, there are fewer scenarios in OpenScenario than in Python format. Secondly, only a few of the existing scenarios are executable at all. Thirdly, the development is less modular than Python development and therefore more difficult to modify.
+OpenScenario is only partially supported by ScenarioRunner. First, there are fewer scenarios in OpenScenario than in python format. Secondly, only a few of the existing scenarios are executable at all. Thirdly, the development is less modular than Python development and therefore more difficult to modify.

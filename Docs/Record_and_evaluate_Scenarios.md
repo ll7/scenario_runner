@@ -1,19 +1,18 @@
 # Record and evaluate scenarios
 
-The following describes how you can record a scenario, where it is stored and how it can be evaluated by replaying it or reading information from it. Finally, it shows a further method to display the output of the test criteria.
+The following documentation is partly based on the general CARLA documentation recorder and playback, which can be found [here](https://carla.readthedocs.io/en/0.9.6/recorder_and_playback/).
+ 
+It has been adapted for the ScenarioRunner in the following. It describes how a scenario can be recorded, where it is stored and how it can be evaluated by replaying it or reading information from it. 
+
+Finally, it shows a further method to display the output of the test criteria.
 
 ## 1.) Storage Location
 
-CARLA includes a recording and replaying API, that allows to record a simulation in a file and later replay that simulation. The file is written on the server side only, and it includes which actors are created or destroyed in the simulation, the state of the traffic lights and the position and orientation of all vehicles and pedestrians. For more information have a look [here](https://carla.readthedocs.io/en/0.9.6/recorder_and_playback/).
-
-
-### Storage Location of the recorded Scenarios
 All the recorded scenarios are stored in the following path as a ".log"-file:
 ```
 ~/.config/Epic/CarlaUE4/Saved
 ```
 
-### Storage Location of sample Scripts
 The following path contains 5 sample scripts for recording and evaluating a scenario:
 ```
 ~/CARLA_0.9.9/PythonAPI/examples
@@ -39,7 +38,7 @@ You can replace the placeholder <"param"> with one of the following parameters:
 -t: Duration of the recording (optional)
 ```
 
-For example recording a Scenario "test1.log" without additional spawned vehicles.
+For example recording a scenario "test1.log" without additional spawned vehicles.
 
 ```
 python start_recording.py -f "test1.log" -n "0"
@@ -49,7 +48,7 @@ python start_recording.py -f "test1.log" -n "0"
 With the following 4 sample scripts you can replay a recorded scenario, retrieve its information, the collisions and the blocked actors.
 
 ### Replaying
-Be aware that you have to execute the same 3 instructions as described in "II.) Replay" at the beginning.
+Be aware that you have to execute the same 3 instructions as described in "2.) Recording" at the beginning.
 
 Then you can start a replay of a file. We can define the starting time, duration and also an actor to follow.
 ```
@@ -71,7 +70,7 @@ python start_replaying.py -f "test2.log" -c "828"
 ```
 
 ### Information Output
-In Contrast to Record and Replay you only have to execute Carla as a preparation to execute the following commands.
+In contrast to record and replay you only have to execute carla as a preparation to execute the following commands.
 
 Then you can enter the following command in the above mentioned directory (~/CARLA_0.9.9/PythonAPI/examples) while starting a scenario:
 
@@ -105,7 +104,7 @@ For example, a section of the information that can be output for the actor with 
 
 
 ### Collision Output
-In Contrast to Record and Replay you only have to execute Carla as a preparation to execute the following commands.
+In contrast to record and replay you only have to execute CARLA as a preparation to execute the following commands.
 
 Then you can enter the following command in the above mentioned directory (~/CARLA_0.9.9/PythonAPI/examples) while starting a scenario:
 
@@ -140,7 +139,7 @@ For example show the collisions of a recorded scenario "test2.log".
 ```
 python show_recorder_collisions.py -f test2.log
 ```
-The Output would look like the following.
+The output would look like the following.
 ```
 Version: 1
 Map: Town01
@@ -154,7 +153,7 @@ Duration: 17.5917 seconds
 There we can see that for each collision the time when happened, the type of the actors involved, and the id and description of each actor is shown.
 
 ### Blocked Actors Output
-In Contrast to Record and Replay you only have to execute Carla as a preparation to execute the following commands.
+In contrast to record and replay you only have to execute Carla as a preparation to execute the following commands.
 
 Then you can enter the following command in the above mentioned directory (~/CARLA_0.9.9/PythonAPI/examples) while starting a scenario:
 
@@ -175,7 +174,7 @@ For example show the blocked Actors of a recorded scenario "test2.log".
 ```
 python show_recorder_collisions.py -f test2.log
 ```
-The Output would look like the following.
+The output would look like the following.
 ```
 Version: 1
 Map: Town01
@@ -188,8 +187,8 @@ Duration: 17.5917 seconds
 ```
 There we can see when an actor was stopped for at least the minimum time specified.
 
-## 4.) Evaluate the output of the executed Scenario
-To evaluate the test criteria of a scenario as described [here](Create_Scenarios.md) and [there](Modify_Scenarios.md). You can use the parameter "--output" by executing your scenario to get an evaluation output on terminal.
+## 4.) Evaluating the test criteria
+To evaluate the test criteria of a scenario as described in [chapter 3.)](Create_Scenarios.md) and [chapter 4.)](Modify_Scenarios.md). You can use the parameter "--output" by executing your scenario to get an evaluation output on terminal.
 ```
 python scenario_runner.py --scenario FollowLeadingVehicle_1 --reloadWorld --output
 ```

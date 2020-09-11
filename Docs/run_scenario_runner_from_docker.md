@@ -102,7 +102,7 @@ After we installed,
 - Docker and 
 - nvidia-docker-2
 
-you can now follow the instructions [Running CARLA container](https://carla.readthedocs.io/en/latest/build_docker/).
+you can now follow the instructions [Running CARLA in a docker](https://carla.readthedocs.io/en/latest/build_docker/).
 
 In brief:
 

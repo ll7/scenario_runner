@@ -1,12 +1,16 @@
 # Using the ScenarioRunner for (semi-)automated testing
 
-The following is an overview of the project module from the chair of mechatronics from the University of Augsburg. The aim of the project module was to execute, investigate and use for test purposes the ScenarioRunner provided by CARLA.
+The following is an overview of the project module from the chair of mechatronics from the University of Augsburg designed in summer term 2020. 
+
+## Goal of the project module
+
+The goal of the project module was to execute, investigate and use for test purposes the ScenarioRunner provided by CARLA.
 
 ## Preparation
 
 This [guide](Docs/getting_scenariorunner.md) from the CARLA ScenarioRunner documentation describes how to download the ScenarioRunner and install it.
 
-## Quick Overview
+## Quick overview
 
 1. [Execute scenarios](Execute_Scenarios.md)
 2. [Overview of scenarios](Overview_of_Scenarios.md)
@@ -15,7 +19,7 @@ This [guide](Docs/getting_scenariorunner.md) from the CARLA ScenarioRunner docum
 5. [Record and evaluate scenarios](Record_and_evaluate_Scenarios.md) 
 6. [(Semi-)automated tests](Semi_automated_tests.md)
 
-#### Additional Work
+#### Additional work
 
 &nbsp;&nbsp;&nbsp;a. [Basics of bash automation](Basics_of_bash_automation.md)\
 &nbsp;&nbsp;&nbsp;b. [Basics of PyTrees](py_trees.md)\
@@ -26,29 +30,29 @@ This [guide](Docs/getting_scenariorunner.md) from the CARLA ScenarioRunner docum
 &nbsp;&nbsp;&nbsp;I.  [OpenScenario](openscenario.md)\
 &nbsp;&nbsp;&nbsp;II. [Running Carla Container](run_scenario_runner_from_docker.md)
 
-## Overview
-This section gives an overview of the main topics of the project module. 
+## Main work packages
+This section gives an overview of the main work packages of the project module. 
 
 ### [1. Excecute scenarios](Execute_Scenarios.md)
-The first part describes the instructions how to execute the supported scenarios. Therein is shown how you have to prepare and a differentiation for the scenarios from OpenScenario.
+The first part describes describes how to run the scenarios in python and OpenScenario format after following the installation guide from CARLA.
 
 ### [2. Overview of scenarios](Overview_of_Scenarios.md)
-The second part gives a detailed overview about the supported scenarios.
+The second part gives a detailed overview about the supported scenarios written in python and OpenScenario.
 
 ### [3. Create scenarios](Create_Scenarios.md)
-The third part describes how to write your own scenario from scratch. Further it explains patterns of frequently used parameters and objects for these classes. Finally, it describes how to add the scenario configuration.
+The third part describes "what" you can use to write your own scenario from scratch. Further it explains patterns of frequently used parameters and objects for these classes. Finally, it describes how to add the scenario configuration.
 
 ### [4. Modify scenarios](Modify_Scenarios.md)
-The fourth part lists a lot of possibilities to modify a scenario, its behavior and its test criteria.
+The fourth part answers the question "how" the possibilities to create a scenario from the previous chapter can be used to modify an (existing) scenario.
 
 ### [5. Record and evaluate scenarios](Record_and_evaluate_Scenarios.md)
 The fifth part describes how you can record a scenario, where it can be stored and how it can be evaluated. Finally, it shows a further method to display the output of the test criteria.
 
 ### [6. (Semi-)automated tests](Semi_automated_tests.md)
-The sixth part describes different ways to run scenarios (semi-)automated.
+The sixth part describes  options of running your scenario runner (semi-)automated.
 
-## Additional Work
-The "Additional Work" part contains documentation that was not necessary for the actual project module and goes beyond the original project objective, but nevertheless provides useful pointers for further work.
+## Additional work
+The "Additional work" part contains documentation that was not necessary for the actual project module and goes beyond the original project objective, but nevertheless provides useful pointers for further work.
 
 ### [a. Basics of bash automation](Basics_of_bash_automation.md)
 The a-part describes basics of bash scripts, shows further useful topics and how you can run multiple terminals from one terminal automated.

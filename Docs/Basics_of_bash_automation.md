@@ -1,7 +1,7 @@
 # Basics of Bash script automation
-Bash scripts are suitable for combining programs according to your needs and they play a central role in the everyday life of system administration. 
+Bash scripts are suitable for combining programs according to your needs and they play a central role in the everyday life of system administration and automation. 
 
-This documentation describes first the very fundamental Basics of Bash Scripts. Second it shows where you can find further useful topics and third how you can run multiple terminals from one terminal automated.
+This documentation describes first the very fundamental basics of Bash Scripts. Second it shows where you can find further useful topics and third how you can run multiple terminals from one terminal automated.
 
 
 ## 1.) Basics of Bash Scripts
@@ -35,7 +35,9 @@ These include topics such as loops, if/else statements, retrieving command line 
 
 ## 3.) Run multiple Terminals from one bash script
 
-For the Carla Use Case it was a consideration to call several separate command lines from a bash script to execute the respective scripts (Carla Server, Scenario, Manual Control, Record, etc.) Due to a memory overflow (more about this in [chapter](Semi_automated_tests.md)) this idea was abandoned. However, the command for this is the following:
+For the carla use case it was a consideration to call several separate command lines from a bash script to execute the respective scripts (Carla Server, Scenario, Manual Control, Record, etc.) Due to a memory overflow (more about this in [chapter](Semi_automated_tests.md)) this idea was abandoned. 
+
+However, the command for this is the following:
 ```
 #gnome-terminal -e <command>
 ```

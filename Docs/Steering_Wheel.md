@@ -1,12 +1,12 @@
 # Steering Wheel
 
-This tutorial describes how you can connect a Steering Wheel with the Carla Scenario Runner.
+This tutorial describes how you can connect a Steering Wheel with the CARLA ScenarioRunner.
 
 It explains the LTWheelConf tool, shows the most important changes and describes how to adjust the sensitivity of the steering wheel.
 
-## 1.) Get the LTWheelConf Tool for support
+For more information about the LTWheelConf tool have a look [here](https://steamcommunity.com/sharedfiles/filedetails/?l=german&id=142372419).
 
-The following sources were used for the paragraphs I.) and II.): https://steamcommunity.com/sharedfiles/filedetails/?l=german&id=142372419
+## 1.) Get the LTWheelConf Tool for support
 
 With the tool LTWheelConf it is possible on Ubuntu to make the following Logitech steering wheels fully functional (separate axles, full wheel ranges, clutch pedal, H-shifter):
 
@@ -62,12 +62,12 @@ These are a selection of supported wheel shortname values you can get with the L
 
 Fortunately Carla already provides a class DualControl() under the following path, which we can reuse slightly modified for our manual control script of Scenario Runner.
 
-So first copy the Dual_Control() Class from in the manual_control.py of your scenario runner:
+So first copy the Dual_Control() Class from in the manual_control.py of your ScenarioRunner:
 ```
 /home/carlaws19/CARLA_0.9.9/PythonAPI/manual_control_steeringwheel.py
 ```
 
-Then you have to some individual debug work depending on the Version of your manual_control_steeringwheel.py script from CARLA and your Version of your Scenario Runner manual_control.py.
+Then you have to some individual debug work depending on the Version of your manual_control_steeringwheel.py script from CARLA and your Version of your ScenarioRunner manual_control.py.
 
 For this purpose we have prepared an executable script as an orientation:
 
@@ -255,7 +255,7 @@ class DualControl(object):
 
 ```
 
-## 4.) Configure the sensitivity of your Steering_Wheel
+## 4.) Configure the sensitivity of your steering wheel
 
 You can modify the function _parse_vehicle_wheel() in the class mentioned above to change the sensitivity of your wheel configurations.
 
@@ -303,9 +303,9 @@ Further possible modifications could be done for the throttle and brake sensitiv
         self._control.hand_brake = bool(jsButtons[self._handbrake_idx])
 ```
 
-## 5.) Execute the CARLA Scenario Runner with your Steering Wheel
+## 5.) Execute the CARLA ScenarioRunner with your steering wheel
 
-Finally, you can execute (from the scenario runner directory) the Scenario Runner with your individually configured steering wheel:
+Finally, you can execute (from the scenario runner directory) the ScenarioRunner with your individually configured steering wheel:
 
 ```
 python manual_control_steering_wheel.py
