@@ -4,7 +4,7 @@ The following is an overview of the project module from the chair of mechatronic
 
 ## Goal of the project module
 
-The goal of the project module was to execute, investigate and use for test purposes the ScenarioRunner provided by CARLA.
+One of the most critical challenges during the CARLA Autonomous Driving Challenge is the testing and the associated validation of the results. In order to defuse the criticality of this component and to create a basis for future work, the CARLA ScenarioRunner was addressed within the framework of this project module. The aim of this project module was to investigate the CARLA ScenarioRunner, put it into operation and identify possible applications.	
 
 ## Preparation
 
@@ -34,7 +34,7 @@ This [guide](Docs/getting_scenariorunner.md) from the CARLA ScenarioRunner docum
 This section gives an overview of the main work packages of the project module. 
 
 ### [1. Excecute scenarios](Execute_Scenarios.md)
-The first part describes describes how to run the scenarios in python and OpenScenario format after following the installation guide from CARLA.
+The first part describes how to run the scenarios in python and OpenScenario format after following the installation guide from CARLA.
 
 ### [2. Overview of scenarios](Overview_of_Scenarios.md)
 The second part gives a detailed overview about the supported scenarios written in python and OpenScenario.

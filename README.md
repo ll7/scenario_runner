@@ -62,5 +62,9 @@ ScenarioRunner specific code is distributed under MIT License.
 
 Using the ScenarioRunner for (semi-)automated tests
 -------
-In context of a student project module from the University of Augsburg they investigated the scenario runner. The aim of the project module was to execute, investigate and use for test purposes the ScenarioRunner provided by CARLA. You can find the detailed documentation 
+The Chair of Mechatronics at the University of Augsburg is offering this challenge to students of the master course of studies in Engineering Informatics in the form of an internship in the winter semester 19/20. It became clear that one of the most critical challenges during this internship was the testing and the associated validation of the results.
+
+In order to defuse the criticality of this component and to create a basis for future students for the course, the CARLA ScenarioRunner was addressed within the framework of this project module. The aim of this project module was to investigate the CARLA ScenarioRunner, put it into operation and identify possible applications.
+	
+You can find the detailed documentation 
 [here](Docs/Using_the_Scenario_Runner_for_semi_automated_testing.md).
