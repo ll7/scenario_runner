@@ -118,7 +118,7 @@ else
 fi
 ```
 
-##4.) Running a list of multiple Scenarios with the semi-automated approach
+## 4.) Running a list of multiple Scenarios with the semi-automated approach
 In addition to the previous semi-automated approach, we are extending it to be able to run a list of scenarios semi-automatically.
 
 First the Carla server must be started again separately.
