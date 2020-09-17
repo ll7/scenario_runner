@@ -1,9 +1,9 @@
-#Running CARLA container
+# Running CARLA container
 This documentation describes what docker is, how you can install it and pull the CARLA image 0.9.9. 
 
 Unfortunately, we got an error by executing the docker image which we couldn't solve. That's why till now it is just an Outlook for further work.
 
-##1 What is Docker?
+## 1 What is Docker?
 Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. 
 
 With Docker, you can manage your infrastructure in the same ways you manage your applications. By taking advantage of Docker’s methodologies for shipping, testing, and deploying code quickly, you can significantly reduce the delay between writing code and running it in production.
@@ -17,7 +17,7 @@ For more information about
 
 have a look on the following [Link](https://docs.docker.com/get-started/overview/).
 
-##2 Install Docker on Ubuntu
+## 2 Install Docker on Ubuntu
 To install Docker on Ubuntu follow the instructions on the following [Link](https://docs.docker.com/engine/install/ubuntu/).
 
 To test if the installation was correctly enter the following command:
@@ -42,7 +42,7 @@ To generate this message, Docker took the following steps:
 [...]
 ```
 
-##3 Install Nvidia-Docker
+## 3 Install Nvidia-Docker
 
 Similarly to Docker installation, start by setting the GPG and remote repo for the package
 ```
@@ -97,7 +97,7 @@ Congrats! You have successfully installed Docker and Nvidia-Docker in your envir
 ```
 
 
-##4 Running Carla container in theory (Outlook)
+## 4 Running Carla container in theory (Outlook)
 After we installed,
 - Docker and 
 - nvidia-docker-2

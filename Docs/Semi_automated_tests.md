@@ -180,9 +180,67 @@ for scenario_name in $listScenarios; do
 done
 ```
 
+## 5.) Running a list of multiple scenarios with the semi-automated approach with slightly different parameters (e.g. start location)
+
+Execute automated scenarios with slightly different parameters (e.g. the location)
 
 
-## 5.) Pros and Cons of fully- and semi-automated Test Scenario
+
+1.) Modify in the Scenario (e.g. FollowLeadingVehicle) in the initialize() method the location parameter with an argument from command line
+
+```
+# Change parameters with command line arguments, e.g. position
+        command_line_argument = sys.argv
+        for i in command_line_argument:
+            if i.isdigit():
+                print("Spawning first vehicle location at: " + i)
+                self._first_vehicle_location = int(i)
+```
+
+
+2.) Run from scenario runner directory the following command with a desired parameter for the location of the first vehicle (e.. 25)
+
+```
+bash automated_scenario_runner_with_location.sh 25
+```
+
+Prepared script:
+```
+#!/bin/bash
+#listScenarios := list of test scenarios
+#scenario_name := a scenario from the list "listScenarios"
+#scenario := Count Variable for the scenarios if you want to the test the same scenario 2 times in the same execution
+#location := an additional argument from command line to modify the location
+
+scenario=1
+location=$1
+
+#Define the list of the scenarios you want to test
+listScenarios="FollowLeadingVehicle_1 FollowLeadingVehicle_1 FollowLeadingVehicle_1"
+
+#Iterate over listScenarios
+for scenario_name in $listScenarios; do
+
+    #Execute the scenario_runner.sh with the 4 arguments (name, true/false, scenario count, location)
+    bash scenario_runner.sh $scenario_name true $scenario $location
+
+    #Increment scenario counter
+    let "scenario++"
+
+    #Decrement start location off the first vehicle
+    ((location=location-10))
+
+done
+```
+
+
+3.) The scenario will be stored in the following format (name, number, location) separated by underscores
+
+
+4.) Finally the next scenario executes with the desired location (e.g. moved by 10)
+
+
+## 6.) Pros and Cons of fully- and semi-automated Test Scenario
 This section explains why we use a semi-automated test scenario once in paragraph 3.)/ 4.) and a fully-automated test scenario once in paragraph 2.)
 
 The main reason is that with the fully-automated Test Scenario we receive the following memory error message after about 3 executions and and then had to restart the computer:

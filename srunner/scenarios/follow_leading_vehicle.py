@@ -16,6 +16,9 @@ a collision. The scenario ends either via a timeout, or if the ego
 vehicle stopped close enough to the leading vehicle
 """
 
+#for command line arguments
+import sys
+
 import random
 
 import py_trees
@@ -67,6 +70,13 @@ class FollowLeadingVehicle(BasicScenario):
         self._other_actor_transform = None
         # Timeout of scenario in seconds
         self.timeout = timeout
+
+        # Change parameters with command line arguments, e.g. location
+        command_line_argument = sys.argv
+        for i in command_line_argument:
+            if i.isdigit():
+                print("Spawning first vehicle location at: " + i)
+                self._first_vehicle_location = int(i)
 
         super(FollowLeadingVehicle, self).__init__("FollowVehicle",
                                                    ego_vehicles,

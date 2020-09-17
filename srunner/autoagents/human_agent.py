@@ -57,29 +57,29 @@ class HumanInterface(object):
         Run the GUI
         """
         while not self._parent.agent_engaged and not self.quit:
-            time.sleep(0.5)
+            time.sleep(0.01)
 
         controller = KeyboardControl()
         while not self.quit:
-            self._clock.tick_busy_loop(20)
+            #self._clock.tick_busy_loop(20)
             controller.parse_events(self._parent.current_control, self._clock)
             # Process events
             pygame.event.pump()
 
             # process sensor data
-            input_data = self._parent.sensor_interface.get_data()
-            image_center = input_data['Center'][1][:, :, -2::-1]
-            image_left = input_data['Left'][1][:, :, -2::-1]
-            image_right = input_data['Right'][1][:, :, -2::-1]
-            image_rear = input_data['Rear'][1][:, :, -2::-1]
+            #input_data = self._parent.sensor_interface.get_data()
+            #image_center = input_data['Center'][1][:, :, -2::-1]
+            #image_left = input_data['Left'][1][:, :, -2::-1]
+            #image_right = input_data['Right'][1][:, :, -2::-1]
+            #image_rear = input_data['Rear'][1][:, :, -2::-1]
 
-            top_row = np.hstack((image_left, image_center, image_right))
-            bottom_row = np.hstack((0 * image_rear, image_rear, 0 * image_rear))
-            comp_image = np.vstack((top_row, bottom_row))
+            #top_row = np.hstack((image_left, image_center, image_right))
+            #bottom_row = np.hstack((0 * image_rear, image_rear, 0 * image_rear))
+            #comp_image = np.vstack((top_row, bottom_row))
             # resize image
-            image_rescaled = cv2.resize(comp_image, dsize=(self._width, self._height), interpolation=cv2.INTER_CUBIC)
+            #image_rescaled = cv2.resize(comp_image, dsize=(self._width, self._height), interpolation=cv2.INTER_CUBIC)
 
-            # display image
+            #display image
             self._surface = pygame.surfarray.make_surface(image_rescaled.swapaxes(0, 1))
             if self._surface is not None:
                 self._display.blit(self._surface, (0, 0))
@@ -153,7 +153,7 @@ class HumanAgent(AutonomousAgent):
         Execute one step of navigation.
         """
         self.agent_engaged = True
-        time.sleep(0.1)
+        time.sleep(0.001)
         return self.current_control
 
     def destroy(self):

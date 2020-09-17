@@ -500,6 +500,10 @@ def main():
                         help='Set the CARLA client timeout value in seconds')
     parser.add_argument('-v', '--version', action='version', version='%(prog)s ' + str(VERSION))
 
+    parser.add_argument(
+        '--modify', help='modify the scenario, e.g. the location')
+
+
     arguments = parser.parse_args()
     # pylint: enable=line-too-long
 
