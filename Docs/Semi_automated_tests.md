@@ -253,7 +253,6 @@ done
 - The approach would be called fully-automated if the scenarios would kill themselves completely after terminating. However, we couldn't face this and had to press after each scenario "STRG + C" to kill the process of a scenario completely and start the next one. We also opened an issue for this topic under the following [Link](https://github.com/carla-simulator/scenario_runner/issues/635).
 
 
-
 ## 6.) Pros and Cons of fully- and semi-automated Test Scenario
 This section explains why we use a semi-automated test scenario once in paragraph 3.)/ 4.) and a fully-automated test scenario once in paragraph 2.)
 
