@@ -10,6 +10,8 @@ This documentation describes options of running your scenario runner (semi-)auto
 
 - Fifthly will be explained why a semi-automated approach is preferred over an automated approach.
 
+- Sixth is an semi-automated option to execute a list of scenarios with slightly different parameters (e.g. start location)
+
 - Finally, there is explained how you can run an automated route based scenario.
 
 ## 1.)  Running all scenarios of one scenario class
@@ -181,12 +183,10 @@ done
 ```
 
 ## 5.) Running a list of multiple scenarios with the semi-automated approach with slightly different parameters (e.g. start location)
+As a further option to the semi-automated approach, it is possible to run several scenarios with slightly different parameters (such as the start location). A concept for this is presented below.
 
-Execute automated scenarios with slightly different parameters (e.g. the location)
-
-
-
-1.) Modify in the Scenario (e.g. FollowLeadingVehicle) in the initialize() method the location parameter with an argument from command line
+#### Modify the initialize() method of the scenario
+In the following lines a list of passed command line parameters was queried. If this list contains a number, then this number was used to overwrite the start position of the preceding vehicle in FollowLeadingVehicle_1 with the value 25.
 
 ```
 # Change parameters with command line arguments, e.g. position
@@ -198,13 +198,21 @@ Execute automated scenarios with slightly different parameters (e.g. the locatio
 ```
 
 
-2.) Run from scenario runner directory the following command with a desired parameter for the location of the first vehicle (e.. 25)
+#### Add a new command line parameter to the scenario_runner.py file
+So that the passed command line parameter of scenario_runner.py could be processed at all, a new command line parameter "--modify" was added in the main() method to the script.
+```
+parser.add_argument(
+        '--modify', help='modify the scenario, e.g. the location')
+```
+
+#### Execute the automated script with the new parameter
+Now that a new command line parameter has been added and the desired scenario can process it, a semi-automated script is presented below, which is executed with the following command. The number 25 is the desired starting position of the vehicle in front and is decremented by 10 per scenario.
 
 ```
 bash automated_scenario_runner_with_location.sh 25
 ```
 
-Prepared script:
+The prepared script looks like this in detail. In the comments the individual lines are explained.
 ```
 #!/bin/bash
 #listScenarios := list of test scenarios
@@ -224,6 +232,9 @@ for scenario_name in $listScenarios; do
     #Execute the scenario_runner.sh with the 4 arguments (name, true/false, scenario count, location)
     bash scenario_runner.sh $scenario_name true $scenario $location
 
+    #Kill the scenario process
+    #STRG + C
+
     #Increment scenario counter
     let "scenario++"
 
@@ -233,11 +244,14 @@ for scenario_name in $listScenarios; do
 done
 ```
 
+#### Comments
 
-3.) The scenario will be stored in the following format (name, number, location) separated by underscores
+- You can add to the scenarios in the list "group:" to execute the all scenarios of this class, e.g. "group:FollowLeadingVehicle" 
 
+- The scenario will be stored in the following format (name, number, location) separated by underscores
 
-4.) Finally the next scenario executes with the desired location (e.g. moved by 10)
+- The approach would be called fully-automated if the scenarios would kill themselves completely after terminating. However, we couldn't face this and had to press after each scenario "STRG + C" to kill the process of a scenario completely and start the next one. We also opened an issue for this topic under the following [Link](https://github.com/carla-simulator/scenario_runner/issues/635).
+
 
 
 ## 6.) Pros and Cons of fully- and semi-automated Test Scenario
@@ -260,7 +274,7 @@ On the other hand, the big advantage of the fully-automated version is that only
 Besides this big advantage it was more target-oriented to work with a semi-automated script and to make the whole thing modular and yet easy to handle. Therefore we recommend to use the semi-automated script for the ScenarioRunner, especially the approach to run a list of scenarios semi-automated as described in paragraph 4.).
 
 
-## 6.) Running automated route-based scenarios
+## 7.) Running automated route-based scenarios
 Finally, the scenario runner also offers the possibility to run automated route-based scenarios similar to the CARLA AD Challenge. For more information have a look [here](https://github.com/ll7/scenario_runner/blob/master/Docs/Running_route-based_scenarios_(similar_to_the_CARLA_AD_Challenge)_and_agent_evaluation.md).
 
 The exemplary routes are stored under the following path:
