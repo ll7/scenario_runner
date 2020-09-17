@@ -48,12 +48,13 @@ python start_recording.py -f "test1.log" -n "0"
 With the following 4 sample scripts you can replay a recorded scenario, retrieve its information, the collisions and the blocked actors.
 
 ### Replaying
-Be aware that you have to execute the same 3 instructions as described in "2.) Recording" at the beginning.
+Be aware that you do not have to execute the same 3 instructions as described in "2.) Recording" at the beginning. 
 
-Then you can start a replay of a file. We can define the starting time, duration and also an actor to follow.
+It is enough to start the CARLA Server and then start a replay of a file. We can define the starting time, duration and also an actor to follow.
 ```
 python start_replaying.py <param> "<name>" 
 ```
+However, if you want to see the scenario from the Ego perspective you have to start the manual_control.py also.
 
 You can replace the placeholder <"param"> with one of the following parameters:
 ```
