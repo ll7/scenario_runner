@@ -8,7 +8,7 @@ One of the most critical challenges during the CARLA Autonomous Driving Challeng
 
 ## Preparation
 
-This [guide](Docs/getting_scenariorunner.md) from the CARLA ScenarioRunner documentation describes how to download the ScenarioRunner and install it.
+This [guide](getting_scenariorunner.md) from the CARLA ScenarioRunner documentation describes how to download the ScenarioRunner and install it.
 
 ## Quick overview
 
