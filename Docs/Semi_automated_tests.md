@@ -250,8 +250,26 @@ done
 
 - The scenario will be stored in the following format (name, number, location) separated by underscores
 
-- The approach would be called fully-automated if the scenarios would kill themselves completely after terminating. However, we couldn't face this and had to press after each scenario "STRG + C" to kill the process of a scenario completely and start the next one. We also opened an issue for this topic under the following [Link](https://github.com/carla-simulator/scenario_runner/issues/635).
+- The approach would be called fully-automated if the scenarios would kill themselves completely after terminating. However, we couldn't face this and had to press after each scenario "CTRL + C" to kill the process of a scenario completely and start the next one. We also opened an issue for this topic under the following [Link](https://github.com/carla-simulator/scenario_runner/issues/635).
 
+
+#### A "hacky" solution to full-automation
+One "hacky" option for the third bullet point to run this approach without pressing "CTRL + C" is to use a timeout by executing the bash command.
+
+##### First find the path of your timeout command
+Check the path of your timeout command
+```
+command -v timeout
+```
+In this case it was: _/usr/bin/timeout_
+
+##### Second add the timout command to the approach
+And then add the absolute path to the bash command in the script above:
+```
+/usr/bin/timeout 50s bash scenario_runner.sh $scenario_name true $scenario $location
+```
+
+Be aware that the timeout should be long enough (e.g. 50 seconds).
 
 ## 6.) Pros and Cons of fully- and semi-automated Test Scenario
 This section explains why we use a semi-automated test scenario once in paragraph 3.)/ 4.) and a fully-automated test scenario once in paragraph 2.)

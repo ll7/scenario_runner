@@ -280,6 +280,7 @@ class HUD(object):
         v = world.vehicle.get_velocity()
         #print(3.6 * math.sqrt(v.x**2 + v.y**2 + v.z**2))
         c = world.vehicle.get_control()
+        #c.throttle = float(1.0)
         heading = 'N' if abs(t.rotation.yaw) < 89.5 else ''
         heading += 'S' if abs(t.rotation.yaw) > 90.5 else ''
         heading += 'E' if 179.5 > t.rotation.yaw > 0.5 else ''
